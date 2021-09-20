@@ -1,0 +1,103 @@
+﻿@Scripts.Render("~/bundles/chart")
+
+
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-9">
+            <h2>Reporte Mensual</h2>
+        </div>
+        <div class="col-3">
+            <input type="month" id="Fecha" class="form-control" style="max-width: 250px; min-width: 250px;" />
+        </div>
+    </div>
+
+
+    <div class="row mt-2">
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Total Ventas</p>
+                    <h5 id="IndTotalVentas"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Total Costo</p>
+                    <h5 id="IndTotalCosto"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Total Utilidad</p>
+                    <table class="w-100">
+                        <tr>
+                            <td><h5 id="IndTotalUtilidad"></h5></td>
+                            <td align="center"><h5 id="IndPorcenUtilidad"></h5></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Total Facturas Emitidas</p>
+                    <h5 id="IndTotalFacturasEmitidas"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12 mt-2">
+            <div class="card shadow-sm">
+                <div class="card-body pt-1 pb-5" style="height: 550px !important">
+                    <h5 class="card-title">Acumulado Costo Venta</h5>
+                    <canvas id="ChartCostoVenta" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mt-2">
+            <div class="card shadow-sm">
+                <div class="card-body pt-1 pb-5" style="height: 550px !important">
+                    <h5 class="card-title">Total Ventas Realizadas</h5>
+                    <canvas id="ChartFacturas" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mt-2">
+            <div class="card shadow-sm">
+                <div class="card-body pt-1 pb-5" style="height: 550px !important">
+                    <h5 class="card-title">Costo vs Utilidad</h5>
+                    <canvas id="ChartCostoUtilidad" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mt-2">
+            <div class="card shadow-sm">
+                <div class="card-body pt-1 pb-5" style="height: 550px !important">
+                    <h5 class="card-title">Porcentaje de Utilidad</h5>
+                    <canvas id="ChartPorcenUtilidad" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/ResumenMensual")
+}

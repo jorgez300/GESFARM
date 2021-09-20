@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "MinMax";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Clasificacion</span>
+                </div>
+                <select id="SelClas" class="form-control">
+                    <option value="T" selected> Todos</option>
+                    <option value="S">Sobrantes</option>
+                    <option value="F">Faltantes</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <button id="BtnFiltrar" type="button" class="btn btn-info w-100">Filtrar</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+            </style>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Promedio</th>
+                        <th>Existen</th>
+                        <th>Minimo</th>
+                        <th>Maximo</th>
+                        <th>Diferencia</th>
+                    </tr>
+                </thead>
+                <tbody id="TableMinMax">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/InvMinMax")
+}
+
