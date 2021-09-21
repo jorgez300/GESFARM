@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Costos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <h2>Costos</h2>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <button type="button" class="btn btn-success" id="BtnAgregar">Agregar</button>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+            </style>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Valor</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="TableCosto">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalCosto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar/Agregar Costo</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Descripcion</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtDescripcion">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Clasificacion</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtClasificacion">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Valor</span>
+                        </div>
+                        <input type="text" class="form-control" id="Valor">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/Costos")
+}

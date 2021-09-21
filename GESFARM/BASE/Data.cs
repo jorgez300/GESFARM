@@ -11,6 +11,7 @@ namespace BASE
     public class Data
     {
         private static string ConnectionString = @"Data Source=HP_OMEN\SQLOMEN;Initial Catalog=GESFARM;User ID=SA;Password=jorge21176439";
+        //private static string ConnectionString = @"Data Source=SERVER;Initial Catalog=GESFARM;User ID=SA;Password=Server123456";
 
         private SqlConnection connection = new SqlConnection(ConnectionString);
 

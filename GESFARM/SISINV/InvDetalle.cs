@@ -219,6 +219,11 @@ namespace SISINV.DETALLE
                             Lista.Add(x);
                         }
 
+                        if (Filtros.F_Accion == "C" && x.Existen == 0)
+                        {
+                            Lista.Add(x);
+                        }
+
                         if (Filtros.F_Accion == "T")
                         {
                             Lista.Add(x);
@@ -244,6 +249,11 @@ namespace SISINV.DETALLE
                     if (Filtros.F_Accion == "T")
                     {
                         Lista = Lista.OrderByDescending(x => x.Sobran).ToList();
+                    }
+
+                    if (Filtros.F_Accion == "C")
+                    {
+                        Lista = Lista.OrderBy(x => x.Sobran).ToList();
                     }
 
                 }

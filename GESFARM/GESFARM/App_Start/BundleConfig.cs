@@ -57,6 +57,13 @@ namespace GESFARM
                        "~/JS/PARAMETROS/FactorCambio/FactorCambioService.js",
                        "~/JS/PARAMETROS/FactorCambio/FactorCambio.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Costos").Include(
+                       "~/JS/SISCOS/CostosService.js",
+                       "~/JS/SISCOS/Costos.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ClasificacionCostos").Include(
+                       "~/JS/SISCOS/CostosService.js",
+                       "~/JS/SISCOS/Clasificacion.js"));
         }
     }
 }
