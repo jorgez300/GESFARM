@@ -45,5 +45,11 @@
     <Compile Include="PrincipioActivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BASE\BASE.csproj">
+      <Project>{067179AE-613C-43FA-B2C1-B71491392D44}</Project>
+      <Name>BASE</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

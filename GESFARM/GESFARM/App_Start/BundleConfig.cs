@@ -64,6 +64,10 @@ namespace GESFARM
             bundles.Add(new ScriptBundle("~/bundles/ClasificacionCostos").Include(
                        "~/JS/SISCOS/CostosService.js",
                        "~/JS/SISCOS/Clasificacion.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/PrinAct").Include(
+                       "~/JS/SISEQUIV/EquivalenciaService.js",
+                       "~/JS/SISEQUIV/PrinAct.js"));
         }
     }
 }

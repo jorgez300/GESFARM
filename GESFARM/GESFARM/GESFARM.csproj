@@ -131,6 +131,8 @@
     <Compile Include="Controllers\PARAMETROS\api\FactorCambioController.cs" />
     <Compile Include="Controllers\SISCOS\api\CostosController.cs" />
     <Compile Include="Controllers\SISCOS\CostosController.cs" />
+    <Compile Include="Controllers\SISEQUIV\api\PrinActController.cs" />
+    <Compile Include="Controllers\SISEQUIV\PrinActController.cs" />
     <Compile Include="Controllers\SISINV\api\InventarioController.cs" />
     <Compile Include="Controllers\SISOPER\api\ResumenDiarioController.cs" />
     <Compile Include="Controllers\SISOPER\api\ResumenMensualController.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JsonHttpStatusResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +206,10 @@
     <Content Include="JS\SISCOS\Clasificacion.js" />
     <Content Include="JS\SISCOS\Costos.js" />
     <Content Include="JS\SISCOS\CostosService.js" />
+    <Content Include="JS\SISEQUIV\AccTerap.js" />
+    <Content Include="JS\SISEQUIV\Equivalencia.js" />
+    <Content Include="JS\SISEQUIV\EquivalenciaService.js" />
+    <Content Include="JS\SISEQUIV\PrinAct.js" />
     <Content Include="JS\SISINV\Inventario\Detalle.js" />
     <Content Include="JS\SISINV\Inventario\InventarioService.js" />
     <Content Include="JS\SISINV\Inventario\MinMax.js" />
@@ -268,21 +275,19 @@
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Views\SISCOS\Costos.cshtml" />
     <Content Include="Views\SISCOS\ClasificacionCostos.cshtml" />
+    <Content Include="Views\SISEQUIV\PrinAct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\SEGURIDAD\api\" />
     <Folder Include="Controllers\SISCEN\api\" />
-    <Folder Include="Controllers\SISEQUIV\api\" />
     <Folder Include="Controllers\SISTRAS\api\" />
     <Folder Include="JS\SEGURIDAD\" />
     <Folder Include="JS\SISCEN\" />
-    <Folder Include="JS\SISEQUIV\" />
     <Folder Include="JS\SISTRAS\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Costos\" />
+    <Folder Include="Views\PrinAct\" />
     <Folder Include="Views\SISCEN\" />
-    <Folder Include="Views\SISEQUIV\" />
     <Folder Include="Views\SISTRAS\" />
   </ItemGroup>
   <ItemGroup>
