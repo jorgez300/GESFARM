@@ -58,42 +58,31 @@ namespace SISINV.DETALLE
         {
             List<InvDetalleItem> Lista = new List<InvDetalleItem>();
 
-            try
-            {
-
-                Data db = new Data();
-                SqlParameter[] parameters = new SqlParameter[] {
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] {
                     Data.NewIN("@F_Anio", SqlDbType.NVarChar, Filtros.F_Anio),
                     Data.NewIN("@F_Mes", SqlDbType.NVarChar, Filtros.F_Mes),
                     Data.NewIN("@F_CodProd", SqlDbType.NVarChar, Filtros.F_CodProd)
                 };
-                DataTable DT = db.CallDBList("GF_DETALLE_INVENTARIO", parameters);
+            DataTable DT = db.CallDBList("GF_DETALLE_INVENTARIO", parameters);
 
-                if (DT.Rows.Count > 0)
-                {
-                    foreach (DataRow item in DT.Rows)
-                    {
-                        Lista.Add(new InvDetalleItem
-                        {
-                            CodProd = item["CodProd"].ToString(),
-                            Descrip = item["Descrip"].ToString(),
-                            SeVenden = float.Parse(item["SeVenden"].ToString()),
-                            Existen = float.Parse(item["Existen"].ToString()),
-                            Minimo = float.Parse(item["Minimo"].ToString()),
-                            Maximo = float.Parse(item["Maximo"].ToString()),
-                            Sobran = float.Parse(item["Sobran"].ToString()),
-                            CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
-                        });
-                    }
-                }
-
-            }
-            catch (Exception e)
+            if (DT.Rows.Count > 0)
             {
-                Console.WriteLine("OOPs, something went wrong.\n" + e);
+                foreach (DataRow item in DT.Rows)
+                {
+                    Lista.Add(new InvDetalleItem
+                    {
+                        CodProd = item["CodProd"].ToString(),
+                        Descrip = item["Descrip"].ToString(),
+                        SeVenden = float.Parse(item["SeVenden"].ToString()),
+                        Existen = float.Parse(item["Existen"].ToString()),
+                        Minimo = float.Parse(item["Minimo"].ToString()),
+                        Maximo = float.Parse(item["Maximo"].ToString()),
+                        Sobran = float.Parse(item["Sobran"].ToString()),
+                        CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
+                    });
+                }
             }
-
-
 
             return Lista;
         }
@@ -105,32 +94,20 @@ namespace SISINV.DETALLE
 
             InvVentasItem Ventas = new InvVentasItem();
 
-            try
-            {
-
-
-                Data db = new Data();
-                SqlParameter[] parameters = new SqlParameter[] {
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] {
                     Data.NewIN("@F_CodProd", SqlDbType.NVarChar, Filtros.F_CodProd)
                 };
-                DataTable DT = db.CallDBList("GF_PROMEDIO_INVENTARIO", parameters);
+            DataTable DT = db.CallDBList("GF_PROMEDIO_INVENTARIO", parameters);
 
-                if (DT.Rows.Count > 0)
-                {
-                    foreach (DataRow item in DT.Rows)
-                    {
-                        Ventas.Periodo.Add(item["Anio"].ToString() + "-" + item["Mes"].ToString());
-                        Ventas.Vendido.Add(float.Parse(item["Vendidos"].ToString()));
-                    }
-                }
-
-
-            }
-            catch (Exception e)
+            if (DT.Rows.Count > 0)
             {
-                Console.WriteLine("OOPs, something went wrong.\n" + e);
+                foreach (DataRow item in DT.Rows)
+                {
+                    Ventas.Periodo.Add(item["Anio"].ToString() + "-" + item["Mes"].ToString());
+                    Ventas.Vendido.Add(float.Parse(item["Vendidos"].ToString()));
+                }
             }
-
 
 
             return Ventas;
@@ -169,10 +146,18 @@ namespace SISINV.DETALLE
         public List<InvMinMaxItem> Lista = new List<InvMinMaxItem>();
         InvMinMaxFiltros Filtros = new InvMinMaxFiltros();
 
+        public int IndExistenciaCero { get; set; } = 0;
+        public int IndExistencia { get; set; } = 0;
+        public int IndSobrante { get; set; } = 0;
+        public int IndFaltante { get; set; } = 0;
+        public int IndOK { get; set; } = 0;
+        public int IndTotal { get; set; } = 0;
+
         public InvMinMax(InvMinMaxFiltros filtros)
         {
             Filtros = filtros;
             Lista = MinMax();
+            SetIndicadores();
         }
 
 
@@ -181,93 +166,118 @@ namespace SISINV.DETALLE
 
             List<InvMinMaxItem> Lista = new List<InvMinMaxItem>();
 
-            try
-            {
 
-                Data db = new Data();
-                SqlParameter[] parameters = new SqlParameter[] {
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] {
                     Data.NewIN("@F_Anio", SqlDbType.NVarChar, Filtros.F_Anio),
                     Data.NewIN("@F_Mes", SqlDbType.NVarChar, Filtros.F_Mes),
                     Data.NewIN("@F_CodProd", SqlDbType.NVarChar, Filtros.F_CodProd)
                 };
-                DataTable DT = db.CallDBList("GF_MINMAX_INVENTARIO", parameters);
+            DataTable DT = db.CallDBList("GF_MINMAX_INVENTARIO", parameters);
 
-                if (DT.Rows.Count > 0)
+            if (DT.Rows.Count > 0)
+            {
+                foreach (DataRow item in DT.Rows)
                 {
-                    foreach (DataRow item in DT.Rows)
+                    InvMinMaxItem x = new InvMinMaxItem
                     {
-                        InvMinMaxItem x = new InvMinMaxItem
-                        {
-                            CodProd = item["CodProd"].ToString(),
-                            Descrip = item["Descrip"].ToString(),
-                            SeVenden = float.Parse(item["SeVenden"].ToString()),
-                            Existen = float.Parse(item["Existen"].ToString()),
-                            Minimo = float.Parse(item["Minimo"].ToString()),
-                            Maximo = float.Parse(item["Maximo"].ToString()),
-                            Sobran = float.Parse(item["Sobran"].ToString()),
-                            CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
+                        CodProd = item["CodProd"].ToString(),
+                        Descrip = item["Descrip"].ToString(),
+                        SeVenden = float.Parse(item["SeVenden"].ToString()),
+                        Existen = float.Parse(item["Existen"].ToString()),
+                        Minimo = float.Parse(item["Minimo"].ToString()),
+                        Maximo = float.Parse(item["Maximo"].ToString()),
+                        Sobran = float.Parse(item["Sobran"].ToString()),
+                        CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
 
-                        };
+                    };
 
-                        if (Filtros.F_Accion == "S" && x.Existen > x.Maximo)
-                        {
-                            Lista.Add(x);
-                        }
-
-                        if (Filtros.F_Accion == "F" && x.Existen < x.Minimo)
-                        {
-                            Lista.Add(x);
-                        }
-
-                        if (Filtros.F_Accion == "C" && x.Existen == 0)
-                        {
-                            Lista.Add(x);
-                        }
-
-                        if (Filtros.F_Accion == "T")
-                        {
-                            Lista.Add(x);
-                        }
-                    }
-                }
-
-                if (Lista.Count > 0)
-                {
-
-                    Lista = Lista.OrderBy(x => x.Sobran).ToList();
-
-                    if (Filtros.F_Accion == "S")
+                    if (Filtros.F_Accion == "S" && x.Existen > x.Maximo)
                     {
-                        Lista = Lista.OrderByDescending(x => x.Sobran).ToList();
+                        Lista.Add(x);
                     }
 
-                    if (Filtros.F_Accion == "F")
+                    if (Filtros.F_Accion == "F" && x.Existen < x.Minimo)
                     {
-                        Lista = Lista.OrderBy(x => x.Sobran).ToList();
+                        Lista.Add(x);
+                    }
+
+                    if (Filtros.F_Accion == "C" && x.Existen == 0)
+                    {
+                        Lista.Add(x);
                     }
 
                     if (Filtros.F_Accion == "T")
                     {
-                        Lista = Lista.OrderByDescending(x => x.Sobran).ToList();
+                        Lista.Add(x);
                     }
+                }
+            }
 
-                    if (Filtros.F_Accion == "C")
-                    {
-                        Lista = Lista.OrderBy(x => x.Sobran).ToList();
-                    }
+            if (Lista.Count > 0)
+            {
 
+                Lista = Lista.OrderBy(x => x.Sobran).ToList();
+
+                if (Filtros.F_Accion == "S")
+                {
+                    Lista = Lista.OrderByDescending(x => x.Sobran).ToList();
                 }
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("OOPs, something went wrong.\n" + e);
+                if (Filtros.F_Accion == "F")
+                {
+                    Lista = Lista.OrderBy(x => x.Sobran).ToList();
+                }
+
+                if (Filtros.F_Accion == "T")
+                {
+                    Lista = Lista.OrderByDescending(x => x.Sobran).ToList();
+                }
+
+                if (Filtros.F_Accion == "C")
+                {
+                    Lista = Lista.OrderBy(x => x.Sobran).ToList();
+                }
+
             }
 
             return Lista;
 
         }
 
+        void SetIndicadores()
+        {
+
+            if (Lista.Count != 0)
+            {
+                IndTotal = Lista.Count;
+                foreach (InvMinMaxItem item in Lista)
+                {
+                    if (item.Existen == 0)
+                    {
+                        IndExistenciaCero++;
+                    }
+                    if (item.Existen != 0 && item.Existen < item.Minimo)
+                    {
+                        IndFaltante++;
+                    }
+                    if (item.Existen != 0 && item.Existen >= item.Minimo && item.Existen <= item.Maximo)
+                    {
+                        IndOK++;
+                    }
+                    if (item.Existen != 0 && item.Existen >= item.Maximo)
+                    {
+                        IndSobrante++;
+                    }
+
+                    if (item.Existen > 0)
+                    {
+                        IndExistencia++;
+                    }
+                }
+            }
+
+        }
 
     }
 

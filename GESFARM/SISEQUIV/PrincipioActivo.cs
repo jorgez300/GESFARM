@@ -35,7 +35,7 @@ namespace SISEQUIV
 
         }
 
-        public List<PrincipioActivo> Lista(FiltrosPrinActivo F)
+        public static List<PrincipioActivo> Lista(FiltrosPrinActivo F)
         {
             List<PrincipioActivo> Lista = new List<PrincipioActivo>();
 

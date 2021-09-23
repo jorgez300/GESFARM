@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using SISINV.DETALLE;
 using SISINV.PRODUCTOS;
+using BASE;
 
 
 namespace GESFARM.Controllers.SISINV.api
@@ -15,29 +16,46 @@ namespace GESFARM.Controllers.SISINV.api
 
 
         // POST api/values
-        public IHttpActionResult Detalle([FromBody]  InvDetalleFiltros Filtros)
+        public HttpResponseMessage Detalle([FromBody] InvDetalleFiltros Filtros)
         {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new InvDetalle(Filtros));
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo detalle", ex.Message));
+            }
 
-            InvDetalle Data = new InvDetalle(Filtros);
 
-
-            return Json(Data);
         }
 
 
 
-        public IHttpActionResult MinMax([FromBody] InvMinMaxFiltros Filtros)
+        public HttpResponseMessage MinMax([FromBody] InvMinMaxFiltros Filtros)
         {
 
-            InvMinMax Data = new InvMinMax(Filtros);
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new InvMinMax(Filtros));
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo minimos y maximos", ex.Message));
+            }
 
-
-            return Json(Data);
         }
 
-        public IHttpActionResult ListaProductos()
+        public HttpResponseMessage ListaProductos()
         {
-            return Json(Productos.ListaProductos());
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Productos.ListaProductos());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista de productos", ex.Message));
+            }
         }
     }
 }

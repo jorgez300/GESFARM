@@ -18,7 +18,8 @@ namespace GESFARM
                         "~/JS/Comun.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bs/bootstrap.min.js"));
+                      "~/Scripts/bs/bootstrap.min.js",
+                      "~/Scripts/toastr.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
                        "~/Scripts/chart.min.js"));
@@ -30,6 +31,7 @@ namespace GESFARM
                       "~/Content/bs/bootstrap.min.css",
                       "~/Content/themes/base/jquery-ui.min.css",
                       "~/Content/jquery.mCustomScrollbar.min.css",
+                      "~/Content/toastr.min.css",
                       "~/Content/site.css"));
 
 

@@ -28,6 +28,7 @@ $("#BtnFiltrar").click(() => {
 
 const Init = (Data) => {
     InitTable(Data);
+    InitIndicadores(Data);
 };
 
 
@@ -71,5 +72,16 @@ const InitTable = (Data) => {
 
     });
 
+
+}
+
+const InitIndicadores = (Data) => {
+
+    $("#IndExistenciaCero").html(new Intl.NumberFormat('de-DE').format(Data.IndExistenciaCero));
+    $("#IndExistencia").html(new Intl.NumberFormat('de-DE').format(Data.IndExistencia));
+    $("#IndSobrante").html(new Intl.NumberFormat('de-DE').format(Data.IndSobrante));
+    $("#IndFaltante").html(new Intl.NumberFormat('de-DE').format(Data.IndFaltante));
+    $("#IndOK").html(new Intl.NumberFormat('de-DE').format(Data.IndOK));
+    $("#IndTotal").html(new Intl.NumberFormat('de-DE').format(Data.IndTotal));
 
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BASE;
 using PARAMETROS.FACTORCAMBIO;
 
 namespace GESFARM.Controllers.PARAMETROS.api
@@ -11,34 +12,57 @@ namespace GESFARM.Controllers.PARAMETROS.api
     public class FactorCambioController : ApiController
     {
 
-        public IHttpActionResult Lista()
+        public HttpResponseMessage Lista()
         {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, FactorCambio.Lista());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista", ex.Message));
+            }
 
-            return Json(FactorCambio.Lista());
         }
 
-        public IHttpActionResult Agregar(ItemFactorCambio Item)
+        public HttpResponseMessage Agregar(FactorCambio Item)
         {
-            Item.Fecha =  DateTime.Now.ToString();
-            Item.Tasa = 1;
 
-            FactorCambio.Agregar(Item);
-
-            return Ok();
+            try
+            {
+                Item.Administrar("GUARDAR");
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando principio activo", ex.Message));
+            }
         }
 
-        public IHttpActionResult Eliminar(ItemFactorCambio Item)
+        public HttpResponseMessage Eliminar(FactorCambio Item)
         {
-            FactorCambio.Eliminar(Item);
-
-            return Ok();
+            try
+            {
+                Item.Administrar("ELIMINAR");
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando principio activo", ex.Message));
+            }
         }
 
-        public IHttpActionResult Actualizar(ItemFactorCambio Item)
+        public HttpResponseMessage Actualizar(FactorCambio Item)
         {
-            FactorCambio.Actualizar(Item);
-
-            return Ok();
+            try
+            {
+                Item.Administrar("ACTUALIZAR");
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error actualizando principio activo", ex.Message));
+            }
         }
 
     }

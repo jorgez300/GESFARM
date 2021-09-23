@@ -2,61 +2,62 @@
 using System.Web.Http;
 using SISEQUIV;
 using BASE;
+using System.Net.Http;
+using System.Net;
 
 namespace GESFARM.Controllers.SISEQUIV.api
 {
     public class PrinActController : ApiController
     {
-        public IHttpActionResult Lista(FiltrosPrinActivo Filtros)
+        public HttpResponseMessage Lista(FiltrosPrinActivo Filtros)
         {
             try
             {
-                PrincipioActivo obj = new PrincipioActivo();
-                return Json(obj.Lista(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, PrincipioActivo.Lista(Filtros));
             }
             catch (Exception ex)
             {
-                return Json(new Error("Error obteniendo lista", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista", ex.Message));
             }
 
         }
 
-        public IHttpActionResult Agregar(PrincipioActivo Item)
+        public HttpResponseMessage Agregar(PrincipioActivo Item)
         {
             try
             {
                 Item.Administrar("GUARDAR");
-                return Ok();
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
             }
             catch (Exception ex)
             {
-                return Json(new Error("Error agregando principio activo", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando principio activo", ex.Message));
             }
         }
 
-        public IHttpActionResult Eliminar(PrincipioActivo Item)
+        public HttpResponseMessage Eliminar(PrincipioActivo Item)
         {
             try
             {
                 Item.Administrar("ELIMINAR");
-                return Ok();
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
             }
             catch (Exception ex)
             {
-                return Json(new Error("Error eliminando principio activo", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando principio activo", ex.Message));
             }
         }
 
-        public IHttpActionResult Actualizar(PrincipioActivo Item)
+        public HttpResponseMessage Actualizar(PrincipioActivo Item)
         {
             try
             {
                 Item.Administrar("ACTUALIZAR");
-                return Ok();
+                return Request.CreateResponse(HttpStatusCode.OK, new { });
             }
             catch (Exception ex)
             {
-                return Json(new Error("Error actualizando principio activo", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error actualizando principio activo", ex.Message));
             }
         }
 

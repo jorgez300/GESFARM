@@ -9,6 +9,8 @@
         data: JSON.stringify(Filtros),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -24,6 +26,8 @@ const AgregarPrinActService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -39,6 +43,8 @@ const EliminarPrinActService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -54,6 +60,8 @@ const ActualizarPrinActService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }

@@ -9,6 +9,8 @@
         data: JSON.stringify(Filtros),*/
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -24,6 +26,8 @@ const AgregarFactorCambioService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -39,6 +43,8 @@ const EliminarFactorCambioService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -54,6 +60,8 @@ const ActualizarFactorCambioService = (Item, Callback) => {
         data: JSON.stringify(Item),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }

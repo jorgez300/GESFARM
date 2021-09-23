@@ -12,6 +12,8 @@ namespace SISOPER.DIARIO
         public string Mes = string.Empty;
         public string Dia = string.Empty;
         public float Facturas = 0;
+        public float Cantidad = 0;
+        public float MtoXVenta = 0;
         public float Venta = 0;
         public float Costo = 0;
         public float Utilidad = 0;
@@ -26,9 +28,11 @@ namespace SISOPER.DIARIO
         public List<string> Periodo = new List<string>();
         public List<float> Facturas = new List<float>();
         public List<float> Venta = new List<float>();
+        public List<float> MtoXVenta = new List<float>();
         public List<float> Costo = new List<float>();
         public List<float> Utilidad = new List<float>();
         public List<float> PorCentajeUtilidad = new List<float>();
+        public List<float> Cantidad = new List<float>();
 
     }
 
@@ -62,6 +66,8 @@ namespace SISOPER.DIARIO
                     Lista.Costo.Add(float.Parse(item["Costo"].ToString()));
                     Lista.Utilidad.Add(float.Parse(item["Utilidad"].ToString()));
                     Lista.PorCentajeUtilidad.Add(float.Parse(item["PorCentajeUtilidad"].ToString()));
+                    Lista.Cantidad.Add(float.Parse(item["Cantidad"].ToString()));
+                    Lista.MtoXVenta.Add(float.Parse(item["MtoXVenta"].ToString()));
                 }
             }
 
@@ -94,7 +100,9 @@ namespace SISOPER.DIARIO
                         Venta = float.Parse(item["Venta"].ToString()),
                         Costo = float.Parse(item["Costo"].ToString()),
                         Utilidad = float.Parse(item["Utilidad"].ToString()),
-                        PorCentajeUtilidad = float.Parse(item["PorCentajeUtilidad"].ToString())
+                        PorCentajeUtilidad = float.Parse(item["PorCentajeUtilidad"].ToString()),
+                        Cantidad = float.Parse(item["Cantidad"].ToString()),
+                        MtoXVenta = float.Parse(item["MtoXVenta"].ToString())
                     };
                 }
             }

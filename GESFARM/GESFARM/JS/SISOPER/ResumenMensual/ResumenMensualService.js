@@ -9,6 +9,8 @@
         data: JSON.stringify(Filtros),*/
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }

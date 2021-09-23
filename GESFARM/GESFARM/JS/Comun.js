@@ -160,3 +160,8 @@ function InitAutocomplete2(id, data, funcion) {
         }
     });
 }
+
+const HandleError = (Error) => {
+    toastr.error(Error.Mensaje, "Error");
+    console.log(Error.Ex)
+}

@@ -9,6 +9,8 @@
         data: JSON.stringify(Filtros),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -24,6 +26,8 @@ const MinMaxService = (Filtros, Callback) => {
         data: JSON.stringify(Filtros),
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }
@@ -38,6 +42,8 @@ const ListaProductosService = (Callback) => {
         }
     }).done(function (response) {
         Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
     })
 
 }

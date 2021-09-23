@@ -13,6 +13,8 @@ const Init = (Data) => {
     InitGrafFacturas(Data);
     InitGrafCostoUtilidad(Data);
     InitGrafPorcenUtilidad(Data);
+    InitGrafCantidad(Data);
+    InitGrafMtoXVenta(Data);
     InitIndicadores(Data);
 };
 
@@ -85,10 +87,10 @@ const InitGrafFacturas = (Data) => {
                 label: 'Facturas',
                 data: Data.Diario.Facturas,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
+                    'rgba(54, 162, 235, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)'
+                    'rgba(54, 162, 235, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -176,10 +178,91 @@ const InitGrafPorcenUtilidad = (Data) => {
                 label: '% Utilidad',
                 data: Data.Diario.PorCentajeUtilidad,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
+                    'rgba(54, 162, 235, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)'
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+}
+
+var ChartCantidad = new Chart();
+var ctxCantidad = null;
+
+const InitGrafCantidad = (Data) => {
+
+    console.log(Data);
+
+    ChartCantidad.destroy();
+
+    ctxCantidad = document.getElementById('ChartCantidad');
+    ChartCantidad = new Chart(ctxCantidad, {
+        type: 'bar',
+        data: {
+            labels: Data.Diario.Periodo,
+            datasets: [{
+                label: 'Articulo por venta',
+                data: Data.Diario.Cantidad,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+}
+
+var ChartMtoXVenta = new Chart();
+var ctxMtoXVenta = null;
+
+
+const InitGrafMtoXVenta = (Data) => {
+
+    console.log(Data);
+
+    ChartMtoXVenta.destroy();
+
+    ctxMtoXVenta = document.getElementById('ChartMtoXVenta');
+    ChartMtoXVenta = new Chart(ctxMtoXVenta, {
+        type: 'bar',
+        data: {
+            labels: Data.Diario.Periodo,
+            datasets: [{
+                label: 'Monto por venta',
+                data: Data.Diario.MtoXVenta,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -200,11 +283,12 @@ const InitGrafPorcenUtilidad = (Data) => {
 
 const InitIndicadores = (Data) => {
 
-
     $("#IndTotalVentas").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Venta));
     $("#IndTotalCosto").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Costo));
     $("#IndTotalUtilidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Utilidad));
     $("#IndPorcenUtilidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.PorCentajeUtilidad) + " %");
     $("#IndTotalFacturasEmitidas").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Facturas));
+    $("#IndTotalCantidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Cantidad));
+    $("#IndTotalMtoXVenta").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.MtoXVenta));
 
 }
