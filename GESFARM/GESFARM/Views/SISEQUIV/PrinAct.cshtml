@@ -14,7 +14,16 @@
 
     <div class="row mb-2">
         <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">PrinAct</span>
+                </div>
+                <input id="PrinAct" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-4">
             <button type="button" class="btn btn-success" id="BtnAgregar">Agregar</button>
+            <button type="button" class="btn btn-info" id="BtnFiltrar">Filtrar</button>
         </div>
     </div>
 
@@ -55,11 +64,11 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="input-group mb-3">
+                    <div id="DivPrinActId" class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Id</span>
                         </div>
-                        <input type="text" class="form-control" id="TxtId">
+                        <input type="text" class="form-control" id="TxtId" disabled>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -68,10 +77,10 @@
                         <input type="text" class="form-control" id="TxtDescripcion">
                     </div>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Vigencia</span>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="ChkVigente" name="ChkVigente">
+                            <label class="custom-control-label" for="ChkVigente">Vigente</label>
                         </div>
-                        <input type="text" class="form-control" id="Valor">
                     </div>
                 </div>
 
@@ -83,6 +92,8 @@
             </div>
         </div>
     </div>
+
+
 
 </div>
 

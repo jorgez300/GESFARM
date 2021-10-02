@@ -32,18 +32,3 @@ const MinMaxService = (Filtros, Callback) => {
 
 }
 
-const ListaProductosService = (Callback) => {
-    $.ajax({
-        url: "/GESFARM/api/Inventario/ListaProductos",
-        method: "POST",
-        timeout: 0,
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).done(function (response) {
-        Callback(response);
-    }).fail(function (response) {
-        HandleError(response.responseJSON);
-    })
-
-}

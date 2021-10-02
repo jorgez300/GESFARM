@@ -17,7 +17,7 @@ namespace SISINV.PRODUCTOS
 
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[0];
-            DataTable DT = db.CallDBList("GF_LISTA_PRODUCTOS", parameters);
+            DataTable DT = db.CallDBList("GF_AUTO_PRODUCTOS", parameters);
 
             return ListaMetodos.GetList(DT);
 

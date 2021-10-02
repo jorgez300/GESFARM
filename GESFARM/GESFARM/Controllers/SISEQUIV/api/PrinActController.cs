@@ -60,6 +60,17 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error actualizando principio activo", ex.Message));
             }
         }
+        public HttpResponseMessage ListaPrincipioActivo()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Listas_Pa_X_Prod.ListaPrincipioActivo());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista de principios activos", ex.Message));
+            }
+        }
 
     }
 }

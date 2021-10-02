@@ -165,3 +165,43 @@ const HandleError = (Error) => {
     toastr.error(Error.Mensaje, "Error");
     console.log(Error.Ex)
 }
+
+
+const ListaProductosService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Inventario/ListaProductos",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const ListaPrincipioActivoService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/PrinAct/ListaPrincipioActivo",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+$(document).ajaxStop(function () {
+    $(".modal_load").hide();
+});
+$(document).ajaxStart(function () {
+    $(".modal_load").show();
+});

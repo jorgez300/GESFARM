@@ -11,6 +11,7 @@ namespace SISEQUIV
 {
     public class FiltrosPrinActivo
     {
+        public int? Id { get; set; } = null;
         public int? Vigencia { get; set; } = null;
     }
 
@@ -41,6 +42,7 @@ namespace SISEQUIV
 
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[] {
+                    Data.NewIN("@ID",SqlDbType.Int,F.Id),
                     Data.NewIN("@VIGENCIA",SqlDbType.Int,F.Vigencia)
                 };
             DataTable DT = db.CallDBList("GF_LISTA_PRIN_ACT", parameters);

@@ -207,3 +207,33 @@ a.article:hover {
     border: 1px solid #CBD3DD;
     background: #FFF;
 }
+
+.ui-front {
+    z-index: 9999999 !important;
+}
+
+.modal_load {
+    display: none;
+    position: fixed;
+    z-index: 10000000000000000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /*background: rgba( 255, 255, 255, .8 ) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;*/
+    background: rgba( 255, 255, 255, .8 );
+}
+
+#Loaddiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 5em;
+    height: 5em;
+    margin-top: -2.5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -2.5em; /*set to a negative number 1/2 of your width*/
+}
+
+.modal_load_visible {
+    display: block !important;
+}

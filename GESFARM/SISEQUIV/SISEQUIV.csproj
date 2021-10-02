@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equivalencia.cs" />
+    <Compile Include="Pa_X_Prod.cs" />
     <Compile Include="PrincipioActivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
+    GetListaPrincipioActivoService();
     ListaPrinActService(Filtros, Init);
 });
 
@@ -6,9 +8,13 @@
 $("#BtnAgregar").click(() => {
 
     $("#ModalPrinAct").modal("show");
+    $("#DivPrinActId").addClass('d-none');
     Current = null;
 
-    AgregarPrinAct();
+});
+
+$("#BtnFiltrar").click(() => {
+    Buscar();
 });
 
 $("#BtnGuardar").click(() => {
@@ -23,15 +29,13 @@ $("#BtnGuardar").click(() => {
 });
 
 $("#BtnCerrar").click(() => {
-    CerrarPrinAct();
+    CloseModal();
 });
 
 
-
-
-
 let Filtros = {
-    Vigencia: null
+    Vigencia: null,
+    Id: null
 }
 let Lista = null;
 let Current = null;
@@ -42,6 +46,41 @@ const Init = (data) => {
 
 }
 
+const SetFiltros = () => {
+
+    Filtros.Vigencia = null;
+    Filtros.Id = $('#PrinActValue').val() != '' ? $('#PrinActValue').val() : null;
+
+}
+
+const CleanFiltros = () => {
+
+    if (Filtros.Id != null) {
+        Filtros.Vigencia = null;
+        Filtros.Id = null;
+
+        $('#PrinActValue').val('');
+        $('#PrinAct').val('');
+    }
+
+
+
+}
+
+
+const GetListaPrincipioActivoService = () => {
+
+    ListaPrincipioActivoService((data) => {
+        InitAutocomplete('PrinAct', data);
+    });
+
+}
+
+const Buscar = () => {
+    SetFiltros();
+    GetListaPrincipioActivoService();
+    ListaPrinActService(Filtros, Init);
+}
 
 const InitTable = () => {
     $("#TablePrinAct").empty();
@@ -53,10 +92,9 @@ const InitTable = () => {
                     <tr>
                         <td>${item.PA_Id}</td>
                         <td>${item.PA_Descrip}</td>
-                        <td>${item.PA_Vigencia}</td>
-
-                        <td><label onclick="EditarFactor('${item.PA_Id}')">Editar</label></td>
-                        <td><label onclick="EliminarFactor('${item.PA_Id}')">Eliminar</label></td>
+                        <td>${(item.PA_Vigencia == 1) ? 'SI' : 'NO'}</td>
+                        <td><label onclick="EditarPrinAct('${item.PA_Id}')">Editar</label></td>
+                        <td><label onclick="EliminarPrinAct('${item.PA_Id}')">Eliminar</label></td>
                     </tr>
             `
         )
@@ -69,29 +107,25 @@ const InitTable = () => {
 const EditarPrinAct = (id) => {
 
     console.log(id);
-
-    let valor = null;
+    $("#DivPrinActId").removeClass('d-none');
 
     Lista.forEach((item) => {
 
-        if (item.Fecha == id) {
-           
+        Current = null;
+
+        if (item.PA_Id == id) {
+
             Current = {
                 PA_Id: item.PA_Id,
                 PA_Descrip: item.PA_Descrip,
                 PA_Vigencia: item.PA_Vigencia
             };
 
+            OpenModal();
+
         }
 
     });
-
-
-
-    $("#TxtFecha").val(id);
-    $("#TxtTasa").val(valor);
-
-    $("#ModalPrinAct").modal("show");
 
 }
 
@@ -112,41 +146,70 @@ const EliminarPrinAct = (id) => {
     }
 
     EliminarPrinActService(Current, () => {
-        Current = null;
+        CleanFiltros();
+        Buscar();
     });
 
 }
 
-const AgregarPrinAct = () => {
-
-    if (Current == null) {
-        return;
-    }
-
-    AgregarPrinActService(Current, () => {
-
-        $("#ModalPrinAct").modal("hide");
-        Current = null;
-    });
-
-}
 
 const ActualizarPrinAct = () => {
 
-    if (Current == null) {
-        return;
-    }
+    Current = {
+        PA_Id: $("#TxtId").val(),
+        PA_Descrip: $("#TxtDescripcion").val(),
+        PA_Vigencia: ($("#ChkVigente").prop('checked')) ? 1 : 0
+    };
 
     ActualizarPrinActService(Current, () => {
-        $("#ModalPrinAct").modal("hide");
-        Current = null;
+        CloseModal();
     });
 
 }
 
-const CerrarPrinAct = () => {
+const GuardarPrinAct = () => {
 
-    $("#ModalPrinAct").modal("hide");
+    Current = {
+        PA_Id: null,
+        PA_Descrip: $("#TxtDescripcion").val(),
+        PA_Vigencia: ($("#ChkVigente").prop('checked')) ? 1 : 0
+    };
+
+    AgregarPrinActService(Current, () => {
+        CloseModal();
+    });
+
+}
+
+
+const OpenModal = () => {
+    CleanModal();
+    SetModal();
+    $("#ModalPrinAct").modal("show");
+}
+
+const CloseModal = () => {
+    CleanModal();
     Current = null;
+    Buscar();
+    $("#ModalPrinAct").modal("hide");
+
+
+}
+
+const CleanModal = () => {
+
+    $("#TxtId").val('');
+    $("#TxtDescripcion").val('');
+    $("#ChkVigente").prop('checked', 0);
+
+}
+
+const SetModal = () => {
+
+    $("#TxtId").val(Current.PA_Id);
+    $("#TxtDescripcion").val(Current.PA_Descrip);
+    $("#ChkVigente").prop('checked', Current.PA_Vigencia);
+
 
 }

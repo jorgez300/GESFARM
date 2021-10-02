@@ -19,6 +19,7 @@ namespace GESFARM
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bs/bootstrap.min.js",
+                      "~/Scripts/popper.min.js",
                       "~/Scripts/toastr.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
@@ -70,6 +71,14 @@ namespace GESFARM
             bundles.Add(new ScriptBundle("~/bundles/PrinAct").Include(
                        "~/JS/SISEQUIV/EquivalenciaService.js",
                        "~/JS/SISEQUIV/PrinAct.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/EquivTotales").Include(
+                       "~/JS/SISEQUIV/EquivalenciaService.js",
+                       "~/JS/SISEQUIV/Totales.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/EquivProductos").Include(
+                       "~/JS/SISEQUIV/EquivalenciaService.js",
+                       "~/JS/SISEQUIV/Productos.js"));
         }
     }
 }
