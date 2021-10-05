@@ -51,14 +51,55 @@
 
 </div>
 
-<div class="row" >
-    <div class="col-12">
+<div class="row">
+    <div class="col-6">
         <div class="card shadow-sm">
             <div class="card-body pt-1 pb-5" style="height: 500px !important">
                 <h5 class="card-title">Grafico de venta mensual</h5>
                 <canvas id="ChPromedioMensual"></canvas>
             </div>
         </div>
+    </div>
+    <div class="col-6">
+
+
+        <div class="row">
+            <div class="col-6">
+                <div class="card shadow-sm">
+                    <div class="card-body pr-2 pl-2">
+                        <p class="card-title">Total Items</p>
+                        <h5 id="IndTotalItems">0</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card shadow-sm">
+                    <div class="card-body pr-2 pl-2">
+                        <p class="card-title">Total Existencia</p>
+                        <h5 id="IndTotalExistencia">0</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Descripcion</th>
+                            <th>Principio Activo</th>
+                            <th>Existen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TableEquivalentes">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 

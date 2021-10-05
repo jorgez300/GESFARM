@@ -18,8 +18,48 @@ namespace SISEQUIV
 
     public class Filtros_Equivalentes
     {
-        public string CODPROD { get; set; } = null;
-        public string EXISTEN { get; set; } = null;
+        public string F_CodProd { get; set; } = null;
+
+    }
+
+    public class EquivalentesTotales
+    {
+        public int? TotalItem { get; set; } = 0;
+        public int? TotalEXisten { get; set; } = 0;
+        public List<Pa_X_Prod> ListaEquivalentes { get; set; } = new List<Pa_X_Prod>();
+
+
+
+        public EquivalentesTotales(Filtros_Equivalentes F)
+        {
+            ListaEquivalentes = Pa_X_Prod.ListaEquivalentes(F);
+            TotalesEquivalentes(F);
+        }
+
+        private void TotalesEquivalentes(Filtros_Equivalentes F)
+        {
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] {
+                    Data.NewIN("@CODPROD",SqlDbType.VarChar,F.F_CodProd)
+                };
+            DataTable DT = db.CallDBList("GF_LISTA_TOTALES_EQUIVALENTES", parameters);
+
+            if (DT.Rows.Count > 0)
+            {
+                foreach (DataRow item in DT.Rows)
+                {
+                    if (item["TITULO"].ToString() == "TOTALESITEM")
+                    {
+                        TotalItem = int.Parse(item["VALOR"].ToString()) + 1;
+                    }
+
+                    if (item["TITULO"].ToString() == "TOTALESEXISTEN")
+                    {
+                        TotalEXisten = int.Parse(item["VALOR"].ToString());
+                    }
+                }
+            }
+        }
 
     }
 
@@ -69,8 +109,8 @@ namespace SISEQUIV
 
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[] {
-                    Data.NewIN("@CODPROD",SqlDbType.VarChar,F.CODPROD),
-                    Data.NewIN("@EXISTEN",SqlDbType.VarChar,F.EXISTEN)
+                    Data.NewIN("@CODPROD",SqlDbType.VarChar,F.F_CodProd),
+                    Data.NewIN("@EXISTEN",SqlDbType.VarChar,DBNull.Value)
                 };
             DataTable DT = db.CallDBList("GF_LISTA_EQUIVALENTES_X_PROD", parameters);
 

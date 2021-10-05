@@ -51,5 +51,18 @@ namespace GESFARM.Controllers.SISEQUIV.api
 
         }
 
+        public HttpResponseMessage ListaEquivalentesTotales(Filtros_Equivalentes Filtros)
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new EquivalentesTotales(Filtros));
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista", ex.Message));
+            }
+
+        }
+
     }
 }

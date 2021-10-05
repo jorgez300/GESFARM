@@ -280,7 +280,6 @@
     <Content Include="Views\SISINV\Inventario\MinMax.cshtml" />
     <Content Include="Views\SISINV\Inventario\Detalle.cshtml" />
     <Content Include="Views\PARAMETROS\FactorCambio\FactorCambio.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
@@ -290,6 +289,7 @@
     <Content Include="Views\SISEQUIV\PrinAct.cshtml" />
     <Content Include="Views\SISEQUIV\Totales.cshtml" />
     <Content Include="Views\SISEQUIV\Productos.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,8 +299,6 @@
     <Folder Include="JS\SEGURIDAD\" />
     <Folder Include="JS\SISCEN\" />
     <Folder Include="JS\SISTRAS\" />
-    <Folder Include="Views\Costos\" />
-    <Folder Include="Views\PrinAct\" />
     <Folder Include="Views\SISCEN\" />
     <Folder Include="Views\SISTRAS\" />
   </ItemGroup>

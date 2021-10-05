@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using SISINV.DETALLE;
 using SISINV.PRODUCTOS;
+using SISEQUIV;
 using BASE;
 
 
@@ -57,5 +58,6 @@ namespace GESFARM.Controllers.SISINV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista de productos", ex.Message));
             }
         }
+
     }
 }

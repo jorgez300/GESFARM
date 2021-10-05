@@ -18,8 +18,7 @@ namespace GESFARM
                         "~/JS/Comun.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bs/bootstrap.min.js",
-                      "~/Scripts/popper.min.js",
+                      "~/Scripts/bs/bootstrap.bundle.min.js",
                       "~/Scripts/toastr.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(

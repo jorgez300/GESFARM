@@ -2,17 +2,40 @@
     GetListaProductos();
 });
 
+let filtro = 
+{
+    F_CodProd: null
+}
 
 $("#BtnFiltrar").click(() => {
-    DetalleService(
-        {
-            "F_Anio": "2021",
-            "F_Mes": "06",
-            "F_CodProd": $("#CodProdValue").val()
-        }
-        ,
-        Init);
+    SetFiltros(null);
+    Buscar();
 })
+
+const Buscar = () => {
+
+    if (filtro.F_CodProd == null) {
+        toastr.warning('Seleccione un producto', 'Advertencia');
+        return;
+    }
+
+    DetalleService(filtro, Init);
+
+    ListaEquivalentesTotalesService(filtro, InitEquivalentes);
+
+}
+
+const SetFiltros =(val) => {
+    
+    if (val != null) {
+        filtro.F_CodProd = val;
+    }
+    else {
+        filtro.F_CodProd = ($('#CodProdValue').val() == '') ? null : $('#CodProdValue').val();
+    }
+    console.log(filtro.F_CodProd)
+}
+
 
 
 
@@ -99,5 +122,48 @@ const GetListaProductos = () =>{
     ListaProductosService((data) => {
         InitAutocomplete('CodProd', data);
     });
+
+}
+
+const InitEquivalentes = (Data) => {
+    InitTableEquivalentes(Data.ListaEquivalentes);
+    InitIndicadores(Data);
+};
+
+
+const InitTableEquivalentes = (Data) => {
+
+    $("#TableEquivalentes").empty();
+
+    Data.forEach((item) => {
+
+        $("#TableEquivalentes").append(
+            `
+                    <tr>
+                        <td><a onclick="BuscarRef('${item.CODIGO}','${item.DESCRIPCION}')">${item.CODIGO}</a></td>
+                        <td>${item.DESCRIPCION}</td>
+                        <td>${item.PA_DESCRIP}</td>
+                        <td>${item.EXISTEN}</td>
+                    </tr>
+            `
+        )
+    });
+}
+
+const InitIndicadores = (Data) => {
+
+    $("#IndTotalItems").text(Data.TotalItem);
+    $("#IndTotalExistencia").text(Data.TotalEXisten);
+
+}
+
+const BuscarRef = (CODIGO, DESCRIPCION) => {
+
+    $("#CodProd").val(CODIGO + " - " + DESCRIPCION);
+    $("#CodProdValue").val(CODIGO);
+
+    SetFiltros(CODIGO);
+
+    Buscar();
 
 }
