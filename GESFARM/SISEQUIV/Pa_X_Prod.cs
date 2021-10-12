@@ -50,7 +50,7 @@ namespace SISEQUIV
                 {
                     if (item["TITULO"].ToString() == "TOTALESITEM")
                     {
-                        TotalItem = int.Parse(item["VALOR"].ToString()) + 1;
+                        TotalItem = int.Parse(item["VALOR"].ToString());
                     }
 
                     if (item["TITULO"].ToString() == "TOTALESEXISTEN")
@@ -110,7 +110,7 @@ namespace SISEQUIV
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[] {
                     Data.NewIN("@CODPROD",SqlDbType.VarChar,F.F_CodProd),
-                    Data.NewIN("@EXISTEN",SqlDbType.VarChar,DBNull.Value)
+                    Data.NewIN("@EXISTEN",SqlDbType.VarChar,'T')
                 };
             DataTable DT = db.CallDBList("GF_LISTA_EQUIVALENTES_X_PROD", parameters);
 
