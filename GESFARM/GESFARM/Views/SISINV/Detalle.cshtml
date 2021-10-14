@@ -52,7 +52,7 @@
 </div>
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-4">
         <div class="card shadow-sm">
             <div class="card-body pt-1 pb-5" style="height: 500px !important">
                 <h5 class="card-title">Grafico de venta mensual</h5>
@@ -60,8 +60,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
-
+    <div class="col-8">
 
         <div class="row">
             <div class="col-6">
@@ -91,6 +90,8 @@
                             <th>Descripcion</th>
                             <th>Principio Activo</th>
                             <th>Existen</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
                         </tr>
                     </thead>
                     <tbody id="TableEquivalentes">
@@ -114,5 +115,5 @@
 
 @section Scripts
     {
-    @Scripts.Render("~/bundles/InvDetalle")
+    @Scripts.Render("~/bundles/InvDetalle?r=" + DateTime.Now.ToString("ddmmyymiss"))
 }

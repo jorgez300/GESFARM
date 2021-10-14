@@ -52,15 +52,18 @@ const InitTable = (Data) => {
     Data.Item.forEach((item) => {
         var HL = "";
 
-        if (item.Existen < item.Minimo) {
+        if (item.Existen < item.Minimo || item.Existen == 0) {
             HL = "bg-warning"
         }
-        if (item.Existen > item.Maximo) {
+
+        if (item.Existen > item.Maximo && item.Existen != 0) {
             HL = "bg-danger"
         }
-        if (item.Existen >= item.Minimo && item.Existen <= item.Maximo) {
+
+        if (item.Existen >= item.Minimo && item.Existen <= item.Maximo && item.Existen != 0) {
             HL = "bg-success"
         }
+
         $("#TableDetalle").append(
             `
                     <tr class="${HL}">
@@ -144,6 +147,8 @@ const InitTableEquivalentes = (Data) => {
                         <td>${item.DESCRIPCION}</td>
                         <td>${item.PA_DESCRIP}</td>
                         <td>${item.EXISTEN}</td>
+                        <td>${FormatNumber(item.COSTO)}</td>
+                        <td>${FormatNumber(item.PRECIO)}</td>
                     </tr>
             `
         )

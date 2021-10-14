@@ -283,12 +283,12 @@ const InitGrafMtoXVenta = (Data) => {
 
 const InitIndicadores = (Data) => {
 
-    $("#IndTotalVentas").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Venta));
-    $("#IndTotalCosto").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Costo));
-    $("#IndTotalUtilidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Utilidad));
-    $("#IndPorcenUtilidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.PorCentajeUtilidad) + " %");
-    $("#IndTotalFacturasEmitidas").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Facturas));
-    $("#IndTotalCantidad").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.Cantidad));
-    $("#IndTotalMtoXVenta").html(new Intl.NumberFormat('de-DE').format(Data.DiaActual.MtoXVenta));
+    $("#IndTotalVentas").html(FormatNumber(Data.DiaActual.Venta));
+    $("#IndTotalCosto").html(FormatNumber(Data.DiaActual.Costo));
+    $("#IndTotalUtilidad").html(FormatNumber(Data.DiaActual.Utilidad));
+    $("#IndPorcenUtilidad").html(FormatNumber(Data.DiaActual.PorCentajeUtilidad) + " %");
+    $("#IndTotalFacturasEmitidas").html(FormatNumber(Data.DiaActual.Facturas));
+    $("#IndTotalCantidad").html(FormatNumber(Data.DiaActual.Cantidad));
+    $("#IndTotalMtoXVenta").html(FormatNumber(Data.DiaActual.MtoXVenta));
 
 }

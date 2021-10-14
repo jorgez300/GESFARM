@@ -39,13 +39,17 @@ namespace GESFARM
 
 
             bundles.Add(new ScriptBundle("~/bundles/InvDetalle").Include(
-                       "~/JS/SISINV/Inventario/InventarioService.js",
-                       "~/JS/SISINV/Inventario/Detalle.js"));
+                       "~/JS/SISINV/InventarioService.js",
+                       "~/JS/SISINV/Detalle.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/InvMinMax").Include(
-                       "~/JS/SISINV/Inventario/InventarioService.js",
-                       "~/JS/SISINV/Inventario/MinMax.js"));
+                       "~/JS/SISINV/InventarioService.js",
+                       "~/JS/SISINV/MinMax.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/InvInstancias").Include(
+                       "~/JS/SISINV/InventarioService.js",
+                       "~/JS/SISINV/Instancias.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ResumenMensual").Include(
                        "~/JS/SISOPER/ResumenMensual/ResumenMensualService.js",

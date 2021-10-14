@@ -17,6 +17,8 @@ namespace SISINV.DETALLE
         public float Minimo = 0;
         public float Maximo = 0;
         public float Sobran = 0;
+        public float Costo = 0;
+        public float Precio = 0;
         public float CostoSobrante = 0;
 
     }

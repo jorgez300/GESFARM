@@ -38,7 +38,7 @@
                 }
             </style>
 
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -100,6 +100,6 @@
 
 @section Scripts
     {
-    @Scripts.Render("~/bundles/PrinAct")
+    @Scripts.Render("~/bundles/PrinAct?r=" + DateTime.Now.ToString("ddmmyymiss"))
 }
 

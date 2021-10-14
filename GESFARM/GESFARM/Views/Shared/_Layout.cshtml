@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                @*<li>
                     <a href="#MenuCostos" data-toggle="collapse" aria-expanded="false">Costos</a>
                     <ul class="collapse list-unstyled" id="MenuCostos">
                         <li>
@@ -56,7 +56,7 @@
                             <a href="/GESFARM/Costos/Clasificacion">Clasificacion</a>
                         </li>
                     </ul>
-                </li>
+                </li>*@
                 <li>
                     <a href="#MenuEquivalencia" data-toggle="collapse" aria-expanded="false">Equivalencia</a>
                     <ul class="collapse list-unstyled" id="MenuEquivalencia">
@@ -78,9 +78,9 @@
                 <li>
                     <a href="/GESFARM/Mensual">Mensual</a>
                 </li>
-                <li>
+                @*<li>
                     <a href="/GESFARM/FactorCambio">Factor Cambio</a>
-                </li>
+                </li>*@
             </ul>
 
         </nav>
@@ -129,11 +129,11 @@
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryUI")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/Comun")
-    @Scripts.Render("~/bundles/mCustomScrollbar")
+    @Scripts.Render("~/bundles/jquery?r=" + DateTime.Now.ToString("ddmmyymiss"))
+    @Scripts.Render("~/bundles/jqueryUI?r=" + DateTime.Now.ToString("ddmmyymiss"))
+    @Scripts.Render("~/bundles/bootstrap?r=" + DateTime.Now.ToString("ddmmyymiss"))
+    @Scripts.Render("~/bundles/Comun?r=" + DateTime.Now.ToString("ddmmyymiss"))
+    @Scripts.Render("~/bundles/mCustomScrollbar?r=" + DateTime.Now.ToString("ddmmyymiss"))
     @RenderSection("scripts", required: false)
 
 

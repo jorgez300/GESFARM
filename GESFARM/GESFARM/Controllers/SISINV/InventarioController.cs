@@ -11,14 +11,14 @@ namespace GESFARM.Controllers.SISINV
 
         public ActionResult Index()
         {
-            return View("~/Views/SISINV/Inventario/MinMax.cshtml");
+            return View("~/Views/SISINV/MinMax.cshtml");
 
         }
 
 
         public ActionResult MinMax()
         {
-            return View("~/Views/SISINV/Inventario/MinMax.cshtml");
+            return View("~/Views/SISINV/MinMax.cshtml");
         }
 
 
@@ -26,7 +26,15 @@ namespace GESFARM.Controllers.SISINV
         public ActionResult Detalle()
         {
 
-            return View("~/Views/SISINV/Inventario/Detalle.cshtml");
+            return View("~/Views/SISINV/Detalle.cshtml");
+
+        }
+
+
+        public ActionResult Instancias()
+        {
+
+            return View("~/Views/SISINV/Instancias.cshtml");
 
         }
 

@@ -205,3 +205,9 @@ $(document).ajaxStop(function () {
 $(document).ajaxStart(function () {
     $(".modal_load").show();
 });
+
+
+const FormatNumber = (data) =>{
+
+    return new Intl.NumberFormat('de-DE').format(data)
+}

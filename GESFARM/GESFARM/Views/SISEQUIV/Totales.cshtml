@@ -45,14 +45,14 @@
                 }
             </style>
 
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id </th>
                         <th>Principio activo</th>
                         <th>Productos</th>
                         <th>Existen</th>
-                        <th>Detalle</th>
+                        <th>Equivalentes</th>
                     </tr>
                 </thead>
                 <tbody id="TableTotalesProdxPrincAct">
@@ -60,6 +60,70 @@
             </table>
         </div>
     </div>
+
+    <style>
+        .modal-dialog {
+            max-width: 900px;
+            margin: 1.75rem auto;
+        }
+    </style>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="ModalEquivalentes">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Equivalentes</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mt-1">
+                            @*<div class="col-12">
+                                <div class="input-group mb-3 input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Existen</span>
+                                    </div>
+                                    <input id="Existen" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button id="BtnBuscarEquivalentes" type="button" class="btn btn-info">Filtrar</button>
+                            </div>*@
+                            <input id="PrinActEquiv" type="hidden" class="form-control" />
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>CodProd</th>
+                                            <th>Descripcion</th>
+                                            <th>Existencia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TableEquivalentes">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="BtnCerrarModalEquivalentes" type="button" class="btn btn-danger">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 

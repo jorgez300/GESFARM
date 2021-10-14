@@ -43,16 +43,16 @@ const InitTable = (Data) => {
 
         var HL = "";
 
-        if (item.Existen < item.Minimo)
+        if (item.Existen < item.Minimo || item.Existen == 0)
         {
             HL = "bg-warning"
         }
 
-        if (item.Existen > item.Maximo) {
+        if (item.Existen > item.Maximo && item.Existen != 0) {
             HL = "bg-danger"
         }
 
-        if (item.Existen >= item.Minimo && item.Existen <= item.Maximo) {
+        if (item.Existen >= item.Minimo && item.Existen <= item.Maximo && item.Existen != 0) {
             HL = "bg-success"
         }
 

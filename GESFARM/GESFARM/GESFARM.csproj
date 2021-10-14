@@ -205,6 +205,10 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="DB\GESFARM.mdf" />
+    <Content Include="DB\GESFARM_log.ldf">
+      <DependentUpon>GESFARM.mdf</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="JS\Comun.js" />
@@ -218,9 +222,10 @@
     <Content Include="JS\SISEQUIV\PrinAct.js" />
     <Content Include="JS\SISEQUIV\Productos.js" />
     <Content Include="JS\SISEQUIV\Totales.js" />
-    <Content Include="JS\SISINV\Inventario\Detalle.js" />
-    <Content Include="JS\SISINV\Inventario\InventarioService.js" />
-    <Content Include="JS\SISINV\Inventario\MinMax.js" />
+    <Content Include="JS\SISINV\Detalle.js" />
+    <Content Include="JS\SISINV\Instancias.js" />
+    <Content Include="JS\SISINV\InventarioService.js" />
+    <Content Include="JS\SISINV\MinMax.js" />
     <Content Include="JS\SISOPER\ResumenDiario\ResumenDiario.js" />
     <Content Include="JS\SISOPER\ResumenDiario\ResumenDiarioService.js" />
     <Content Include="JS\SISOPER\ResumenMensual\ResumenMensual.js" />
@@ -278,8 +283,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\SISOPER\Diario\Index.cshtml" />
     <Content Include="Views\SISOPER\Mensual\Index.cshtml" />
-    <Content Include="Views\SISINV\Inventario\MinMax.cshtml" />
-    <Content Include="Views\SISINV\Inventario\Detalle.cshtml" />
+    <Content Include="Views\SISINV\MinMax.cshtml" />
+    <Content Include="Views\SISINV\Detalle.cshtml" />
     <Content Include="Views\PARAMETROS\FactorCambio\FactorCambio.cshtml" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
@@ -291,6 +296,7 @@
     <Content Include="Views\SISEQUIV\Totales.cshtml" />
     <Content Include="Views\SISEQUIV\Productos.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\SISINV\Instancias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
