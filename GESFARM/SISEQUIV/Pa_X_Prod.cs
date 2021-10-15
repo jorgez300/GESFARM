@@ -70,8 +70,8 @@ namespace SISEQUIV
         public string DESCRIPCION { get; set; }
         public int EXISTEN { get; set; }
         public int ID_PA { get; set; }
-        public int COSTO { get; set; }
-        public int PRECIO { get; set; }
+        public float COSTO { get; set; }
+        public float PRECIO { get; set; }
         public string PA_DESCRIP { get; set; }
 
         public static List<Pa_X_Prod> ListaProdxPrincAct(Filtros_Pa_X_Prod F)
@@ -95,6 +95,8 @@ namespace SISEQUIV
                         CODIGO = item["CODIGO"].ToString(),
                         DESCRIPCION = item["DESCRIPCION"].ToString(),
                         EXISTEN = int.Parse(item["EXISTEN"].ToString()),
+                        COSTO = float.Parse(item["COSTPRO"].ToString()),
+                        PRECIO = float.Parse(item["PRECIO3"].ToString()),
                         ID_PA = int.Parse(item["ID_PA"].ToString()),
                         PA_DESCRIP = item["PA_DESCRIP"].ToString()
                     });
@@ -112,11 +114,8 @@ namespace SISEQUIV
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[] {
                     Data.NewIN("@CODPROD",SqlDbType.VarChar,F.F_CodProd),
-<<<<<<< Updated upstream
                     Data.NewIN("@EXISTEN",SqlDbType.VarChar,'T')
-=======
-                    Data.NewIN("@EXISTEN",SqlDbType.VarChar,"T")
->>>>>>> Stashed changes
+
                 };
             DataTable DT = db.CallDBList("GF_LISTA_EQUIVALENTES_X_PROD", parameters);
 
@@ -129,8 +128,8 @@ namespace SISEQUIV
                         CODIGO = item["CODIGO"].ToString(),
                         DESCRIPCION = item["DESCRIPCION"].ToString(),
                         EXISTEN = int.Parse(item["EXISTEN"].ToString()),
-                        COSTO = int.Parse(item["COSTPRO"].ToString()),
-                        PRECIO = int.Parse(item["PRECIO3"].ToString()),
+                        COSTO = float.Parse(item["COSTPRO"].ToString()),
+                        PRECIO = float.Parse(item["PRECIO3"].ToString()),
                         ID_PA = int.Parse(item["ID_PA"].ToString()),
                         PA_DESCRIP = item["PA_DESCRIP"].ToString()
                     });

@@ -106,6 +106,8 @@ const InitTableEquivalentes = () => {
                         <td>${item.CODIGO}</td>
                         <td>${item.DESCRIPCION}</td>
                         <td>${item.EXISTEN}</td>
+                        <td>${item.COSTO}</td>
+                        <td>${item.PRECIO}</td>
                     </tr>
             `
         )

@@ -205,10 +205,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
-    <Content Include="DB\GESFARM.mdf" />
-    <Content Include="DB\GESFARM_log.ldf">
-      <DependentUpon>GESFARM.mdf</DependentUpon>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="JS\Comun.js" />
@@ -248,7 +244,6 @@
     <Content Include="Content\popper-utils.min.js.map" />
     <Content Include="Content\popper.js.map" />
     <Content Include="Content\popper.min.js.map" />
-    <Content Include="DB\DB.7z" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\bs\bootstrap.bundle.js" />
     <Content Include="Scripts\bs\bootstrap.bundle.min.js" />
