@@ -136,6 +136,7 @@
     <Compile Include="Controllers\SISEQUIV\api\Prod_x_PaController.cs" />
     <Compile Include="Controllers\SISEQUIV\PA_X_ProdController.cs" />
     <Compile Include="Controllers\SISEQUIV\PrinActController.cs" />
+    <Compile Include="Controllers\SISINV\api\InstanciasController.cs" />
     <Compile Include="Controllers\SISINV\api\InventarioController.cs" />
     <Compile Include="Controllers\SISOPER\api\ResumenDiarioController.cs" />
     <Compile Include="Controllers\SISOPER\api\ResumenMensualController.cs" />

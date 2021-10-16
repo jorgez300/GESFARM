@@ -5,6 +5,71 @@
 }
 
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Instancia</span>
+                </div>
+                <input id="CodInstancia" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-3">
+            <button id="BtnFiltrar" type="button" class="btn btn-info w-100">Filtrar</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Item totales</p>
+                    <h5 id="IndItemTotales"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Existencia total</p>
+                    <h5 id="IndExistencia"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .table td, .table th {
+            padding: .15rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Principio Activo</th>
+                        <th>Promedio</th>
+                        <th>Existen</th>
+                        <th>Minimo</th>
+                        <th>Maximo</th>
+                        <th>Diferencia</th>
+                        <th>Costo</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="TableInstancia">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
 
 </div>

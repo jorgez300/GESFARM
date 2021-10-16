@@ -48,6 +48,7 @@ const Init = (Data) => {
 const InitTable = (Data) => {
 
     $("#TableDetalle").empty();
+    $("#TableInstancia").empty();
 
     Data.Item.forEach((item) => {
         var HL = "";
@@ -74,6 +75,16 @@ const InitTable = (Data) => {
                         <td>${item.Minimo}</td>
                         <td>${item.Maximo}</td>
                         <td>${item.Sobran}</td>
+                    </tr>
+            `
+        )
+
+        $("#TableInstancia").append(
+            `
+                    <tr>
+                        <td>${item.Instancia}</td>
+                        <td>${item.Costo}</td>
+                        <td>${item.Precio}</td>
                     </tr>
             `
         )

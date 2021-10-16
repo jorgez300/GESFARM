@@ -19,6 +19,8 @@ namespace SISINV.DETALLE
         public float Sobran = 0;
         public float Costo = 0;
         public float Precio = 0;
+        public string Instancia = "";
+        public string PrincAct = "";
         public float CostoSobrante = 0;
 
     }
@@ -81,6 +83,9 @@ namespace SISINV.DETALLE
                         Minimo = float.Parse(item["Minimo"].ToString()),
                         Maximo = float.Parse(item["Maximo"].ToString()),
                         Sobran = float.Parse(item["Sobran"].ToString()),
+                        Costo = float.Parse(item["CostPro"].ToString()),
+                        Precio = float.Parse(item["Precio3"].ToString()),
+                        Instancia = item["Instancia"].ToString(),
                         CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
                     });
                 }

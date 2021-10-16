@@ -199,6 +199,22 @@ const ListaPrincipioActivoService = (Callback) => {
 
 }
 
+const ListaInstanciaService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Instancias/ListaInstancias",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
 $(document).ajaxStop(function () {
     $(".modal_load").hide();
 });

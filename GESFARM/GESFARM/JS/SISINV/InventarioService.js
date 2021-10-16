@@ -49,3 +49,21 @@ const ListaEquivalentesTotalesService = (Filtros, Callback) => {
 
 }
 
+
+const InstanciasDetalleService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Instancias/Detalle",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
