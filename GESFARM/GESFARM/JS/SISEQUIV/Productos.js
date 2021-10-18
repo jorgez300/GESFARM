@@ -15,8 +15,7 @@ let FiltrosDetalle = {
 }
 
 let FiltrosEquivalentes = {
-    CODPROD: null,
-    EXISTEN: null
+    F_CodProd: null
 }
 
 let Asignacion = {
@@ -225,8 +224,7 @@ const Equivalentes = (id) => {
 
 const SetFiltrosEquivalentes = () => {
 
-    FiltrosEquivalentes.CODPROD = $("#CodprodEquiv").val();
-    FiltrosEquivalentes.EXISTEN = $("#Existen option:selected").val();
+    FiltrosEquivalentes.F_CodProd = $("#CodprodEquiv").val();
 
 }
 
