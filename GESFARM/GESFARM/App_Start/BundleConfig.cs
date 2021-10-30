@@ -51,6 +51,11 @@ namespace GESFARM
                        "~/JS/SISINV/InventarioService.js",
                        "~/JS/SISINV/Instancias.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Traspaso").Include(
+                       "~/JS/SISTRAS/TraspasoService.js",
+                       "~/JS/SISTRAS/Traspaso.js"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/ResumenMensual").Include(
                        "~/JS/SISOPER/ResumenMensual/ResumenMensualService.js",
                        "~/JS/SISOPER/ResumenMensual/ResumenMensual.js"));
@@ -75,6 +80,10 @@ namespace GESFARM
                        "~/JS/SISEQUIV/EquivalenciaService.js",
                        "~/JS/SISEQUIV/PrinAct.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Presentacion").Include(
+                       "~/JS/SISEQUIV/EquivalenciaService.js",
+                       "~/JS/SISEQUIV/Presentacion.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/EquivTotales").Include(
                        "~/JS/SISEQUIV/EquivalenciaService.js",
                        "~/JS/SISEQUIV/Totales.js"));
@@ -82,6 +91,8 @@ namespace GESFARM
             bundles.Add(new ScriptBundle("~/bundles/EquivProductos").Include(
                        "~/JS/SISEQUIV/EquivalenciaService.js",
                        "~/JS/SISEQUIV/Productos.js"));
+
+
         }
     }
 }

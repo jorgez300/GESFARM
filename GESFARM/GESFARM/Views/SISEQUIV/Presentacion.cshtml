@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Presentacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <h2>Presentacion</h2>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Presentacion</span>
+                </div>
+                <input id="Presentacion" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-success" id="BtnAgregar">Agregar</button>
+            <button type="button" class="btn btn-info" id="BtnFiltrar">Filtrar</button>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+            </style>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Vigencia</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="TablePresentacion">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalPresentacion">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar/Agregar PPresentacion</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div id="DivPresentacionId" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Id</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtId" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Descripcion</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtDescripcion">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="ChkVigente" name="ChkVigente">
+                            <label class="custom-control-label" for="ChkVigente">Vigente</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/Presentacion?r=" + DateTime.Now.ToString("ddmmyymiss"))
+}
+

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Traspaso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Traspaso</h2>
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/Traspaso?r=" + DateTime.Now.ToString("ddmmyymiss"))
+}

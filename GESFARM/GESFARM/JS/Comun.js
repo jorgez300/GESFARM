@@ -223,7 +223,18 @@ $(document).ajaxStart(function () {
 });
 
 
-const FormatNumber = (data) =>{
+const FormatNumber = (data) => {
 
     return new Intl.NumberFormat('de-DE').format(data)
+}
+
+function OpenFile(base64URL, titulo) {
+    if (base64URL.length > 100) {
+        $("#AdjLink").remove();
+        $("#sidebar").append(`<a class='d-none' id='AdjLink' download='${titulo}' href='${base64URL}'>aaaa</a>`);
+        $('#AdjLink')[0].click();
+    }
+    else {
+        toastr.error("Adjunto no accesible");
+    }
 }

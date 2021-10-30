@@ -42,8 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemTraspaso.cs" />
+    <Compile Include="Traspaso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BASE\BASE.csproj">
+      <Project>{067179ae-613c-43fa-b2c1-b71491392d44}</Project>
+      <Name>BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SISINV\SISINV.csproj">
+      <Project>{ae1429d3-84fe-422d-afde-b58132da3b05}</Project>
+      <Name>SISINV</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
