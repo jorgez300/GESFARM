@@ -1,4 +1,11 @@
 ﻿
+let Filtros = {
+    Vigencia: null,
+    Id: null
+}
+let Lista = null;
+let Current = null;
+
 $(document).ready(function () {
     GetListaPrincipioActivoService();
     ListaPrinActService(Filtros, Init);
@@ -19,7 +26,13 @@ $("#BtnFiltrar").click(() => {
 
 $("#BtnGuardar").click(() => {
 
-    if (Current == null) {
+    Current = {
+        PA_Id: $('#TxtId').val() != '' ? $('#TxtId').val() : null,
+        PA_Descrip: $("#TxtDescripcion").val(),
+        PA_Vigencia: ($("#ChkVigente").prop('checked')) ? 1 : 0
+    };
+
+    if (Current.PA_Id == null) {
         GuardarPrinAct();
     } else {
         ActualizarPrinAct();
@@ -33,12 +46,6 @@ $("#BtnCerrar").click(() => {
 });
 
 
-let Filtros = {
-    Vigencia: null,
-    Id: null
-}
-let Lista = null;
-let Current = null;
 
 const Init = (data) => {
     Lista = data;

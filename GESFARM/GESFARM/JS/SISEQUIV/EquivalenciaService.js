@@ -150,3 +150,79 @@ const EliminarEquivalenciaService = (Item, Callback) => {
     })
 
 }
+
+
+
+
+
+
+
+
+
+const ListaPresentacionService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Presentacion/Lista",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const AgregarPresentacionService = (Item, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Presentacion/Agregar",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Item),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const EliminarPresentacionService = (Item, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Presentacion/Eliminar",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Item),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const ActualizarPresentacionService = (Item, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Presentacion/Actualizar",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Item),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}

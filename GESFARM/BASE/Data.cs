@@ -24,9 +24,18 @@ namespace BASE
 
         public Data()
         {
-            cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (DateTime.Now <= new DateTime(202, 11, 30))
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.StoredProcedure;
+            }
+            else
+            {
+                throw new VersionNotFoundException("Licencia expirada");
+            }
+
         }
 
         public DataTable CallDBList(string SP, SqlParameter[] parametros)

@@ -183,6 +183,22 @@ const ListaProductosService = (Callback) => {
 
 }
 
+const AutoPresentacionService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Presentacion/Auto",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
 const ListaPrincipioActivoService = (Callback) => {
     $.ajax({
         url: "/GESFARM/api/PrinAct/ListaPrincipioActivo",
