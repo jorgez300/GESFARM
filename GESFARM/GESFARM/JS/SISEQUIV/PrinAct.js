@@ -1,13 +1,13 @@
 ﻿
 let Filtros = {
-    Vigencia: null,
-    Id: null
+    PA_Vigencia: null,
+    PA_Id: null
 }
 let Lista = null;
 let Current = null;
 
 $(document).ready(function () {
-    GetListaPrincipioActivoService();
+    GetAutoPrincipioActivoService();
     ListaPrinActService(Filtros, Init);
 });
 
@@ -55,16 +55,16 @@ const Init = (data) => {
 
 const SetFiltros = () => {
 
-    Filtros.Vigencia = null;
-    Filtros.Id = $('#PrinActValue').val() != '' ? $('#PrinActValue').val() : null;
+    Filtros.PA_Vigencia = null;
+    Filtros.PA_Id = $('#PrinActValue').val() != '' ? $('#PrinActValue').val() : null;
 
 }
 
 const CleanFiltros = () => {
 
-    if (Filtros.Id != null) {
-        Filtros.Vigencia = null;
-        Filtros.Id = null;
+    if (Filtros.PA_Id != null) {
+        Filtros.PA_Vigencia = null;
+        Filtros.PA_Id = null;
 
         $('#PrinActValue').val('');
         $('#PrinAct').val('');
@@ -75,9 +75,9 @@ const CleanFiltros = () => {
 }
 
 
-const GetListaPrincipioActivoService = () => {
+const GetAutoPrincipioActivoService = () => {
 
-    ListaPrincipioActivoService((data) => {
+    AutoPrincipioActivoService((data) => {
         InitAutocomplete('PrinAct', data);
     });
 
@@ -85,7 +85,7 @@ const GetListaPrincipioActivoService = () => {
 
 const Buscar = () => {
     SetFiltros();
-    GetListaPrincipioActivoService();
+    GetAutoPrincipioActivoService();
     ListaPrinActService(Filtros, Init);
 }
 

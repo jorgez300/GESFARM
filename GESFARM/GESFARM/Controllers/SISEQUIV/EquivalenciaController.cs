@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace GESFARM.Controllers.SISEQUIV
 {
-    public class PA_X_ProdController : Controller
+    public class EquivalenciaController : Controller
     {
         public ActionResult Totales()
         {

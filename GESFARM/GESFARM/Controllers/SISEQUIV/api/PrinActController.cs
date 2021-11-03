@@ -9,11 +9,11 @@ namespace GESFARM.Controllers.SISEQUIV.api
 {
     public class PrinActController : ApiController
     {
-        public HttpResponseMessage Lista(FiltrosPrinActivo Filtros)
+        public HttpResponseMessage Lista(PrincipioActivo Item)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, PrincipioActivo.Lista(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, Item.Lista());
             }
             catch (Exception ex)
             {
@@ -21,7 +21,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
             }
 
         }
-
         public HttpResponseMessage Agregar(PrincipioActivo Item)
         {
             try
@@ -34,7 +33,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando principio activo", ex.Message));
             }
         }
-
         public HttpResponseMessage Eliminar(PrincipioActivo Item)
         {
             try
@@ -47,7 +45,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando principio activo", ex.Message));
             }
         }
-
         public HttpResponseMessage Actualizar(PrincipioActivo Item)
         {
             try
@@ -60,11 +57,11 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error actualizando principio activo", ex.Message));
             }
         }
-        public HttpResponseMessage ListaPrincipioActivo()
+        public HttpResponseMessage Auto()
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Listas_Pa_X_Prod.ListaPrincipioActivo());
+                return Request.CreateResponse(HttpStatusCode.OK, PrincipioActivo.Auto());
             }
             catch (Exception ex)
             {

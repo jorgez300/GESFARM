@@ -9,17 +9,13 @@ using System.Threading.Tasks;
 
 namespace SISEQUIV
 {
-    public class FiltrosPrinActivo
-    {
-        public int? Id { get; set; } = null;
-        public int? Vigencia { get; set; } = null;
-    }
+    
 
     public class PrincipioActivo
     {
-        public int PA_Id { get; set; }
+        public int? PA_Id { get; set; }
         public string PA_Descrip { get; set; }
-        public int PA_Vigencia { get; set; }
+        public int? PA_Vigencia { get; set; }
 
         public void Administrar(string Accion)
         {
@@ -35,15 +31,14 @@ namespace SISEQUIV
             db.CallDBParameters("GF_ADM_PRINC_ACT", parameters);
 
         }
-
-        public static List<PrincipioActivo> Lista(FiltrosPrinActivo F)
+        public List<PrincipioActivo> Lista()
         {
             List<PrincipioActivo> Lista = new List<PrincipioActivo>();
 
             Data db = new Data();
             SqlParameter[] parameters = new SqlParameter[] {
-                    Data.NewIN("@ID",SqlDbType.Int,F.Id),
-                    Data.NewIN("@VIGENCIA",SqlDbType.Int,F.Vigencia)
+                    Data.NewIN("@ID",SqlDbType.Int,PA_Id),
+                    Data.NewIN("@VIGENCIA",SqlDbType.Int,PA_Vigencia)
                 };
             DataTable DT = db.CallDBList("GF_LISTA_PRIN_ACT", parameters);
 
@@ -63,6 +58,17 @@ namespace SISEQUIV
 
             return Lista;
         }
+        public static List<ItemLista> Auto()
+        {
+
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[0];
+            DataTable DT = db.CallDBList("GF_AUTO_PRIN_ACT", parameters);
+
+            return ListaMetodos.GetList(DT);
+
+        }
+
 
 
     }

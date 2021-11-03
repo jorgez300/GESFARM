@@ -49,6 +49,7 @@ const InitTable = (Data) => {
                         <td>${item.CodProd}</td>
                         <td>${item.Descrip}</td>
                         <td>${item.PrincAct}</td>
+                        <td>${item.Pres}</td>
                         <td>${item.SeVenden}</td>
                         <td>${item.Existen}</td>
                         <td>${item.Minimo}</td>

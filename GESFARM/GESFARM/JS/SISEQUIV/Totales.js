@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    GetListaPrincipioActivoService();
-    ListaTotalesProdxPrincActService(Filtros, Init);
+    GetAutoPrincipioActivoService();
+    ListaTotalesService(Filtros, Init);
 });
 
 let Filtros = {
@@ -9,8 +9,8 @@ let Filtros = {
 }
 
 let FiltrosEquivalentes = {
-    CODPROD: null,
-    PRIN_ACT: null
+    ID_PR: null,
+    ID_PA: null
 }
 
 let Lista = [];
@@ -23,7 +23,7 @@ const Init = (data) => {
 
 $("#BtnFiltrar").click(() => {
     SetFiltros();
-    ListaTotalesProdxPrincActService(Filtros, Init);
+    ListaTotalesService(Filtros, Init);
 })
 
 const InitTable = () => {
@@ -36,9 +36,10 @@ const InitTable = () => {
                     <tr>
                         <td>${item.ID_PA}</td>
                         <td>${item.PA_DESCRIP}</td>
-                        <td>${item.PROD_X_PA}</td>
+                        <td>${item.PR_DESCRIP}</td>
+                        <td>${item.TOTAL_EEPP}</td>
                         <td>${item.TOTAL}</td>
-                        <td><label onclick="Equivalentes('${item.ID_PA}')">Equivalentes</label></td>
+                        <td><label onclick="Equivalentes('${item.ID_PA}', '${item.ID_PR}')">Equivalentes</label></td>
                     </tr>
             `
         )
@@ -55,9 +56,9 @@ const SetFiltros = () => {
 
 }
 
-const GetListaPrincipioActivoService = () => {
+const GetAutoPrincipioActivoService = () => {
 
-    ListaPrincipioActivoService((data) => {
+    AutoPrincipioActivoService((data) => {
         InitAutocomplete('PrinAct', data);
     });
 
@@ -69,24 +70,21 @@ $("#BtnCerrarModalEquivalentes").click(() => {
     CloseModalEquivalentes();
 })
 
-$("#BtnBuscarEquivalentes").click(() => {
+
+
+
+const Equivalentes = (ID_PA, ID_PR) => {
+
+    $("#PrinActEquiv").val(ID_PA);
+    $("#PresEquiv").val(ID_PR);
     SetFiltrosEquivalentes();
-    ListaEquivalentesService(FiltrosEquivalentes, InitEquivalentes);
-})
-
-
-
-
-const Equivalentes = (id) => {
-    console.log(id);
-    $("#PrinActEquiv").val(id);
-    SetFiltrosEquivalentes();
-    ListaProdxPrincActService(FiltrosEquivalentes, InitEquivalentes);
+    ListaDetalleEquivalentesEEPPService(FiltrosEquivalentes, InitEquivalentes);
 }
 
 const SetFiltrosEquivalentes = () => {
 
-    FiltrosEquivalentes.PRIN_ACT = $("#PrinActEquiv").val();
+    FiltrosEquivalentes.ID_PA = $("#PrinActEquiv").val();
+    FiltrosEquivalentes.ID_PR = $("#PresEquiv").val();
 
 }
 
@@ -105,6 +103,8 @@ const InitTableEquivalentes = () => {
                     <tr>
                         <td>${item.CODIGO}</td>
                         <td>${item.DESCRIPCION}</td>
+                        <td>${item.PA_DESCRIP}</td>
+                        <td>${item.PR_DESCRIP}</td>
                         <td>${item.EXISTEN}</td>
                         <td>${item.COSTO}</td>
                         <td>${item.PRECIO}</td>

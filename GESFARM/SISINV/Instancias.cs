@@ -72,6 +72,7 @@ namespace SISINV.INSTANCIA
                         Precio = float.Parse(item["Precio3"].ToString()),
                         Instancia = item["Instancia"].ToString(),
                         PrincAct = item["PrincAct"].ToString(),
+                        Pres = item["Pres"].ToString(),
                         CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
                     });
                 }

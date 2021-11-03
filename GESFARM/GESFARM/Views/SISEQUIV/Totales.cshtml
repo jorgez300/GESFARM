@@ -50,6 +50,7 @@
                     <tr>
                         <th>Id </th>
                         <th>Principio activo</th>
+                        <th>Presentacion</th>
                         <th>Productos</th>
                         <th>Existen</th>
                         <th>Equivalentes</th>
@@ -69,32 +70,21 @@
     </style>
 
     <!-- The Modal -->
-    <div class="modal fade" id="ModalEquivalentes">
+    <div class="modal fade" id="ModalEquivalentes" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Equivalentes</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row mt-1">
-                            @*<div class="col-12">
-                                <div class="input-group mb-3 input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Existen</span>
-                                    </div>
-                                    <input id="Existen" type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button id="BtnBuscarEquivalentes" type="button" class="btn btn-info">Filtrar</button>
-                            </div>*@
                             <input id="PrinActEquiv" type="hidden" class="form-control" />
+                            <input id="PresEquiv" type="hidden" class="form-control" />
                         </div>
                         <div class="row mt-1">
                             <div class="col-12">
@@ -103,6 +93,8 @@
                                         <tr>
                                             <th>CodProd</th>
                                             <th>Descripcion</th>
+                                            <th>Principio Activo</th>
+                                            <th>Presentacion</th>
                                             <th>Existencia</th>
                                             <th>Costo</th>
                                             <th>Precio</th>

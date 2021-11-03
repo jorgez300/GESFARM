@@ -19,9 +19,17 @@
         <div class="col-12">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">PrinAct</span>
+                    <span class="input-group-text">Principio activo</span>
                 </div>
                 <input id="PrinAct" type="text" class="form-control" />
+            </div>
+        </div>        
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Presentacion</span>
+                </div>
+                <input id="Pres" type="text" class="form-control" />
             </div>
         </div>
         <div class="col-3">
@@ -48,11 +56,14 @@
                         <th>Existen</th>
                         <th>Id Principio Activo</th>
                         <th>Principio activo</th>
-                        <th>Detalle</th>
+                        <th>Id Presentacion</th>
+                        <th>Presentacion</th>
                         <th>Equivalentes</th>
+                        <th colspan="2" class="text-center">Asignar</th>
+                        
                     </tr>
                 </thead>
-                <tbody id="TableProdxPrincAct">
+                <tbody id="TableDetalleProductos">
                 </tbody>
             </table>
         </div>
@@ -66,14 +77,13 @@
     </style>
 
     <!-- The Modal -->
-    <div class="modal fade" id="ModalProdxPrincAct">
+    <div class="modal fade" id="ModalProdxPrincAct" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Asignar principio activo</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
@@ -86,7 +96,7 @@
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">PrinActAsig</span>
+                                        <span class="input-group-text">Principio Activo</span>
                                     </div>
                                     <input id="PrinActAsig" type="text" class="form-control" />
                                 </div>
@@ -126,14 +136,13 @@
 
 
     <!-- The Modal -->
-    <div class="modal fade" id="ModalEquivalentes">
+    <div class="modal fade" id="ModalEquivalentes" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Equivalentes</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
@@ -162,6 +171,7 @@
                                             <th>Descripcion</th>
                                             <th>Existencia</th>
                                             <th>Principio Activo</th>
+                                            <th>Presentacion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="TableEquivalentes">
@@ -181,6 +191,64 @@
         </div>
     </div>
 
+
+    <!-- The Modal -->
+    <!-- The Modal -->
+    <div class="modal fade" id="ModalPresentacion"  data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Asignar Presentacion</h4>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <label id="LblProdPresentacion"></label>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Presentacion</span>
+                                    </div>
+                                    <input id="Presentacion" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <button id="BtnAsignarPresentacion" type="button" class="btn btn-success w-100">Asignar</button>
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id Presentacion</th>
+                                            <th>Presentacion</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TablePresentacion">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="BtnCerrarModalPresentacion" type="button" class="btn btn-danger">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 

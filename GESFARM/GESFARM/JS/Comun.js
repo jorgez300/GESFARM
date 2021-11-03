@@ -167,6 +167,7 @@ const HandleError = (Error) => {
 }
 
 
+
 const ListaProductosService = (Callback) => {
     $.ajax({
         url: "/GESFARM/api/Inventario/ListaProductos",
@@ -199,9 +200,9 @@ const AutoPresentacionService = (Callback) => {
 
 }
 
-const ListaPrincipioActivoService = (Callback) => {
+const AutoPrincipioActivoService = (Callback) => {
     $.ajax({
-        url: "/GESFARM/api/PrinAct/ListaPrincipioActivo",
+        url: "/GESFARM/api/PrinAct/Auto",
         method: "POST",
         timeout: 0,
         headers: {

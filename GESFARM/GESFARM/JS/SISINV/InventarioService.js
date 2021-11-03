@@ -32,9 +32,9 @@ const MinMaxService = (Filtros, Callback) => {
 
 }
 
-const ListaEquivalentesTotalesService = (Filtros, Callback) => {
+const EquivalentesTotalesService = (Filtros, Callback) => {
     $.ajax({
-        url: "/GESFARM/api/Prod_x_Pa/ListaEquivalentesTotales",
+        url: "/GESFARM/api/DetalleEquivalente/EquivalentesTotales",
         method: "POST",
         timeout: 0,
         headers: {

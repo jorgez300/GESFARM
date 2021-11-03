@@ -4,19 +4,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SISEQUIV;
 using BASE;
+using SISEQUIV;
 
 namespace GESFARM.Controllers.SISEQUIV.api
 {
-    public class Prod_x_PaController : ApiController
+    public class DetalleEquivalenteController : ApiController
     {
-
-        public HttpResponseMessage ListaProdxPrincAct(Filtros_Pa_X_Prod Filtros)
+        public HttpResponseMessage Lista(Detalle Item)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Pa_X_Prod.ListaProdxPrincAct(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, Item.ListaDetalleEquivalentes());
             }
             catch (Exception ex)
             {
@@ -25,11 +24,11 @@ namespace GESFARM.Controllers.SISEQUIV.api
 
         }
 
-        public HttpResponseMessage ListaTotalesProdxPrincAct(Filtros_Totales_Pa_X_Prod Filtros)
+        public HttpResponseMessage ListaEquivalentesProducto(FiltrosEquivalentes Filtros)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Totales_Pa_X_Prod.ListaTotalesProdxPrincAct(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, Detalle.ListaEquivalentesProducto(Filtros));
             }
             catch (Exception ex)
             {
@@ -38,11 +37,11 @@ namespace GESFARM.Controllers.SISEQUIV.api
 
         }
 
-        public HttpResponseMessage ListaEquivalentes(Filtros_Equivalentes Filtros)
+        public HttpResponseMessage ListaDetalleEquivalentesEEPP(Detalle Item)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Pa_X_Prod.ListaEquivalentes(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, Item.ListaDetalleEquivalentesEEPP());
             }
             catch (Exception ex)
             {
@@ -51,11 +50,11 @@ namespace GESFARM.Controllers.SISEQUIV.api
 
         }
 
-        public HttpResponseMessage ListaEquivalentesTotales(Filtros_Equivalentes Filtros)
+        public HttpResponseMessage EquivalentesTotales(FiltrosEquivalentes Filtros)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new EquivalentesTotales(Filtros));
+                return Request.CreateResponse(HttpStatusCode.OK, Detalle.EquivalentesTotales(Filtros));
             }
             catch (Exception ex)
             {
@@ -63,6 +62,5 @@ namespace GESFARM.Controllers.SISEQUIV.api
             }
 
         }
-
     }
 }

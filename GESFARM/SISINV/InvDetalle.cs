@@ -10,18 +10,20 @@ namespace SISINV.DETALLE
 
     public class InvDetalleItem
     {
-        public string CodProd = string.Empty;
-        public string Descrip = string.Empty;
-        public float SeVenden = 0;
-        public float Existen = 0;
-        public float Minimo = 0;
-        public float Maximo = 0;
-        public float Sobran = 0;
-        public float Costo = 0;
-        public float Precio = 0;
-        public string Instancia = "";
-        public string PrincAct = "";
-        public float CostoSobrante = 0;
+        public string MyProperty { get; set; }
+        public string CodProd { get; set; }
+        public string Descrip { get; set; }
+        public float SeVenden { get; set; }
+        public float Existen { get; set; }
+        public float Minimo { get; set; }
+        public float Maximo { get; set; }
+        public float Sobran { get; set; }
+        public float Costo { get; set; }
+        public float Precio { get; set; }
+        public string Instancia { get; set; }
+        public string PrincAct { get; set; }
+        public string Pres { get; set; }
+        public float CostoSobrante { get; set; }
 
     }
 
@@ -196,10 +198,10 @@ namespace SISINV.DETALLE
                         Existen = float.Parse(item["Existen"].ToString()),
                         Minimo = float.Parse(item["Minimo"].ToString()),
                         Maximo = float.Parse(item["Maximo"].ToString()),
-                        Sobran = float.Parse(item["Sobran"].ToString()),
-                        CostoSobrante = float.Parse(item["CostoSobrante"].ToString()),
-                        Costo = float.Parse(item["Costo"].ToString()),
-                        Precio = float.Parse(item["Precio"].ToString())
+                        Sobran = float.Parse(item["Sobran"].ToString())
+                        //CostoSobrante = float.Parse(item["CostoSobrante"].ToString()),
+                        //Costo = float.Parse(item["Costo"].ToString()),
+                        //Precio = float.Parse(item["Precio"].ToString())
 
                     };
 

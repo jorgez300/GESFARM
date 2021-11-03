@@ -16,9 +16,6 @@ namespace SISEQUIV
         public int? PR_Id { get; set; }
         public string PR_Descrip { get; set; }
         public int? PR_Vigencia { get; set; }
-        public Presentacion()
-        {
-        }
 
         public void Administrar(string Accion)
         {
@@ -34,7 +31,6 @@ namespace SISEQUIV
             db.CallDBParameters("GF_ADM_PRESENTACION", parameters);
 
         }
-
         public List<Presentacion> Lista()
         {
             List<Presentacion> Lista = new List<Presentacion>();
@@ -62,8 +58,7 @@ namespace SISEQUIV
 
             return Lista;
         }
-
-        public List<ItemLista> Auto()
+        public static List<ItemLista> Auto()
         {
 
             Data db = new Data();

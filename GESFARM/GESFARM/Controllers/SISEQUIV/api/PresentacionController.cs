@@ -24,7 +24,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
             }
 
         }
-
         public HttpResponseMessage Agregar(Presentacion Item)
         {
             try
@@ -37,7 +36,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando principio activo", ex.Message));
             }
         }
-
         public HttpResponseMessage Eliminar(Presentacion Item)
         {
             try
@@ -50,7 +48,6 @@ namespace GESFARM.Controllers.SISEQUIV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando principio activo", ex.Message));
             }
         }
-
         public HttpResponseMessage Actualizar(Presentacion Item)
         {
             try
@@ -67,8 +64,7 @@ namespace GESFARM.Controllers.SISEQUIV.api
         {
             try
             {
-                Presentacion Item = new Presentacion();
-                return Request.CreateResponse(HttpStatusCode.OK, Item.Auto());
+                return Request.CreateResponse(HttpStatusCode.OK, Presentacion.Auto());
             }
             catch (Exception ex)
             {

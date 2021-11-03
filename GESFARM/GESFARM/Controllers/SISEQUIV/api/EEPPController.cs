@@ -9,9 +9,9 @@ using SISEQUIV;
 
 namespace GESFARM.Controllers.SISEQUIV.api
 {
-    public class EquivalenciaController : ApiController
+    public class EEPPController : ApiController
     {
-        public HttpResponseMessage Asignar(Equivalencia Item)
+        public HttpResponseMessage Asignar(EEPP Item)
         {
 
             try
@@ -21,10 +21,10 @@ namespace GESFARM.Controllers.SISEQUIV.api
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando equivalencia", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
             }
         }
-        public HttpResponseMessage Desvincular(Equivalencia Item)
+        public HttpResponseMessage Desvincular(EEPP Item)
         {
             try
             {
@@ -33,26 +33,26 @@ namespace GESFARM.Controllers.SISEQUIV.api
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando equivalencia", ex.Message));
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error eliminando EEPP", ex.Message));
             }
         }
-        public HttpResponseMessage ListaProdxPrincAct(Equivalencia item)
+        public HttpResponseMessage ListaProdxPres(EEPP item)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, item.ListaProdxPrincAct());
+                return Request.CreateResponse(HttpStatusCode.OK, item.ListaProdxPres());
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista", ex.Message));
             }
 
-        }
-        public HttpResponseMessage ListaPrincActXProd(Equivalencia item)
+        }    
+        public HttpResponseMessage ListaPresXProd(EEPP item)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, item.ListaPrincActXProd());
+                return Request.CreateResponse(HttpStatusCode.OK, item.ListaPresXProd());
             }
             catch (Exception ex)
             {

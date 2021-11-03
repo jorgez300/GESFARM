@@ -7,6 +7,11 @@ let filtro =
     F_CodProd: null
 }
 
+let FiltrosEquivalentes = {
+    CODIGO: null,
+    EXISTEN: null
+}
+
 $("#BtnFiltrar").click(() => {
     SetFiltros(null);
     Buscar();
@@ -21,21 +26,23 @@ const Buscar = () => {
 
     DetalleService(filtro, Init);
 
-    ListaEquivalentesTotalesService(filtro, InitEquivalentes);
-
+    EquivalentesTotalesService(FiltrosEquivalentes, InitEquivalentes);
 }
 
 const SetFiltros =(val) => {
     
     if (val != null) {
         filtro.F_CodProd = val;
+        FiltrosEquivalentes.CODIGO = val;
+        FiltrosEquivalentes.EXISTEN = 'T';
     }
     else {
         filtro.F_CodProd = ($('#CodProdValue').val() == '') ? null : $('#CodProdValue').val();
+        FiltrosEquivalentes.CODIGO = ($('#CodProdValue').val() == '') ? null : $('#CodProdValue').val();
+        FiltrosEquivalentes.EXISTEN = 'T';
     }
-    console.log(filtro.F_CodProd)
-}
 
+}
 
 
 
@@ -157,6 +164,7 @@ const InitTableEquivalentes = (Data) => {
                         <td><a onclick="BuscarRef('${item.CODIGO}','${item.DESCRIPCION}')">${item.CODIGO}</a></td>
                         <td>${item.DESCRIPCION}</td>
                         <td>${item.PA_DESCRIP}</td>
+                        <td>${item.PR_DESCRIP}</td>
                         <td>${item.EXISTEN}</td>
                         <td>${FormatNumber(item.COSTO)}</td>
                         <td>${FormatNumber(item.PRECIO)}</td>

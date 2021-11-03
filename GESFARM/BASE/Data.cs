@@ -25,7 +25,7 @@ namespace BASE
         public Data()
         {
 
-            if (DateTime.Now <= new DateTime(202, 11, 30))
+            if (DateTime.Now <= new DateTime(2021, 11, 30))
             {
                 cmd = new SqlCommand();
                 cmd.Connection = connection;
