@@ -294,7 +294,7 @@ const InitPrincAct = (data) => {
 
 const DesvincularPrincAct = (ID_PA) => {
 
-    AsignacionPA.PA_Id = ID_PA;
+    AsignacionPA.PXP_PaId = ID_PA;
 
     DesvincularPrincActService(AsignacionPA, () => {
 

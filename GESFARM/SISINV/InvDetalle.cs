@@ -10,7 +10,6 @@ namespace SISINV.DETALLE
 
     public class InvDetalleItem
     {
-        public string MyProperty { get; set; }
         public string CodProd { get; set; }
         public string Descrip { get; set; }
         public float SeVenden { get; set; }
@@ -88,6 +87,8 @@ namespace SISINV.DETALLE
                         Costo = float.Parse(item["CostPro"].ToString()),
                         Precio = float.Parse(item["Precio3"].ToString()),
                         Instancia = item["Instancia"].ToString(),
+                        PrincAct = item["PA_DESCRIP"].ToString(),
+                        Pres = item["PR_DESCRIP"].ToString(),
                         CostoSobrante = float.Parse(item["CostoSobrante"].ToString())
                     });
                 }

@@ -90,6 +90,8 @@ const InitTable = (Data) => {
             `
                     <tr>
                         <td>${item.Instancia}</td>
+                        <td>${item.PrincAct}</td>
+                        <td>${item.Pres}</td>
                         <td>${item.Costo}</td>
                         <td>${item.Precio}</td>
                     </tr>
