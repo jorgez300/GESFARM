@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Parametros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <h2>Parametro</h2>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        @*<div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Parametro</span>
+                </div>
+                <input id="Parametro" type="text" class="form-control" />
+            </div>
+        </div>*@
+        <div class="col-4">
+            <button type="button" class="btn btn-success" id="BtnAgregar">Agregar</button>
+            <button type="button" class="btn btn-info" id="BtnFiltrar">Filtrar</button>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+            </style>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Valor numerico</th>
+                        <th>Valor texto</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="TableParametro">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalParametro">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar/Agregar Parametro</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div id="DivParametroId" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Id</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtId">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tipo dato</span>
+                        </div>
+                        <select name="Tipo" id="Tipo" class="custom-select">
+                            <option value="T" selected>Texto</option>
+                            <option value="N">Numerico</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Valor</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtValor">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/Parametro?r=" + DateTime.Now.ToString("ddmmyymiss"))
+}

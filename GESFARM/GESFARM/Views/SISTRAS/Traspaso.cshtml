@@ -4,7 +4,174 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Traspaso</h2>
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <h2>Traspaso</h2>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-4">
+            <button type="button" class="btn btn-danger" id="BtnGenerar">Generar</button>
+        </div>
+    </div>
+
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="input-group mb-1">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="ArchivoTraspasoFFD" accept=".json">
+                    <label class="custom-file-label" for="ArchivoTraspaso">Elegir archivo de traspaso FFD</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group mb-1">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="ArchivoTraspasoMVP" accept=".json">
+                    <label class="custom-file-label" for="ArchivoTraspaso">Elegir archivo de traspaso MVP</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group mb-1">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="ArchivoTraspasoVP" accept=".json">
+                    <label class="custom-file-label" for="ArchivoTraspaso">Elegir archivo de traspaso VP</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-success" id="BtnSubir">Subir</button>
+            <button type="button" class="btn btn-info" id="BtnEvaluar">Evaluar</button>
+        </div>
+    </div>
+
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+
+                .cellMVP {
+                    background-color: rgb(255, 204, 204);
+                }
+                .cellVP {
+                    background-color: rgb(217, 255, 204);
+                }
+                .cellFFD {
+                    background-color: rgb(204, 242, 255);
+                }
+            </style>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th rowspan="2" style="vertical-align: middle !important;">Codigo</th>
+                        <th colspan="11" style="text-align:center" class="cellFFD">FFD</th>
+                        <th colspan="11" style="text-align:center" class="cellVP">VP</th>
+                        <th colspan="11" style="text-align:center" class="cellMVP">MVP</th>
+                    </tr>
+                    <tr>
+
+                        <th class="cellFFD" nowrap>Descripcion</th>
+                        <th class="cellFFD" nowrap>Existen</th>
+                        <th class="cellFFD" nowrap>Promedio</th>
+                        <th class="cellFFD" nowrap>Minimo</th>
+                        <th class="cellFFD" nowrap>Maximo</th>
+                        <th class="cellFFD" nowrap>Id PA</th>
+                        <th class="cellFFD" nowrap>Principio Activo</th>
+                        <th class="cellFFD" nowrap>Id PR</th>
+                        <th class="cellFFD" nowrap>Presentacion</th>
+                        <th class="cellFFD" nowrap>Costo</th>
+                        <th class="cellFFD" nowrap>Precio</th>
+
+                        <th class="cellVP" nowrap>Descripcion</th>
+                        <th class="cellVP" nowrap>Existen</th>
+                        <th class="cellVP" nowrap>Promedio</th>
+                        <th class="cellVP" nowrap>Minimo</th>
+                        <th class="cellVP" nowrap>Maximo</th>
+                        <th class="cellVP" nowrap>Id PA</th>
+                        <th class="cellVP" nowrap>Principio Activo</th>
+                        <th class="cellVP" nowrap>Id PR</th>
+                        <th class="cellVP" nowrap>Presentacion</th>
+                        <th class="cellVP" nowrap>Costo</th>
+                        <th class="cellVP" nowrap>Precio</th>
+
+                        <th class="cellMVP" nowrap>Descripcion</th>
+                        <th class="cellMVP" nowrap>Existen</th>
+                        <th class="cellMVP" nowrap>Promedio</th>
+                        <th class="cellMVP" nowrap>Minimo</th>
+                        <th class="cellMVP" nowrap>Maximo</th>
+                        <th class="cellMVP" nowrap>Id PA</th>
+                        <th class="cellMVP" nowrap>Principio Activo</th>
+                        <th class="cellMVP" nowrap>Id PR</th>
+                        <th class="cellMVP" nowrap>Presentacion</th>
+                        <th class="cellMVP" nowrap>Costo</th>
+                        <th class="cellMVP" nowrap>Precio</th>
+
+                    </tr>
+                </thead>
+                <tbody id="TableComparacion">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalTraspaso">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar/Agregar Traspaso</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div id="DivTraspasoId" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Id</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtId">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tipo dato</span>
+                        </div>
+                        <select name="Tipo" id="Tipo" class="custom-select">
+                            <option value="T" selected>Texto</option>
+                            <option value="N">Numerico</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Valor</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtValor">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
 
 @section Scripts
     {

@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace GESFARM.Controllers.PARAMETROS
 {
-    public class FactorCambioController : Controller
+    public class ParametrosController : Controller
     {
         public ActionResult Index()
         {
-            return View("~/Views/PARAMETROS/FactorCambio.cshtml");
+            return View("~/Views/PARAMETROS/Parametros.cshtml");
         }
-        public ActionResult FactorCambio()
+        public ActionResult Parametros()
         {
-            return View("~/Views/PARAMETROS/FactorCambio.cshtml");
+            return View("~/Views/PARAMETROS/Parametros.cshtml");
         }
     }
 }

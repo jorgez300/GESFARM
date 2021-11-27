@@ -18,14 +18,5 @@ namespace BASE
         }
 
 
-        public static dynamic GeneraObjeto(string objeto)
-        {
-
-            return JsonConvert.DeserializeObject<dynamic>(objeto);
-
-        }
-
-
-
     }
 }

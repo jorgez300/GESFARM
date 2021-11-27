@@ -17,6 +17,21 @@ namespace BASE
             }
         }
 
+        public static void LimpiaCarpeta(string Dir)
+        {
+           DirectoryInfo di = new DirectoryInfo(Dir);
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+        }
+
+
 
     }
 }

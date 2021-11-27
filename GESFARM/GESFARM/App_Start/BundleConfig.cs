@@ -92,6 +92,9 @@ namespace GESFARM
                        "~/JS/SISEQUIV/EquivalenciaService.js",
                        "~/JS/SISEQUIV/Productos.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Parametro").Include(
+                       "~/JS/PARAMETROS/Parametro/ParametroService.js",
+                       "~/JS/PARAMETROS/Parametro/Parametro.js"));
 
         }
     }

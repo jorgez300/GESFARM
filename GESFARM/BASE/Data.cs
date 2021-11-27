@@ -11,7 +11,7 @@ namespace BASE
     public class Data
     {
         //private static string ConnectionString = @"Data Source=ALIEN;Initial Catalog=GESFARM;User ID=SA;Password=jorge21176439";
-        private static string ConnectionString = @"Data Source=HP_OMEN\SQLOMEN;Initial Catalog=GESFARM;User ID=SA;Password=jorge21176439";
+        private static string ConnectionString = @"Data Source=HP_OMEN\SQLOMEN;Initial Catalog=GESFARM2;User ID=SA;Password=jorge21176439";
         //private static string ConnectionString = @"Data Source=SERVER;Initial Catalog=GESFARM;User ID=SA;Password=298266899";
         //private static string ConnectionString = @"Data Source=SERVER;Initial Catalog=GESFARM2;User ID=SA;Password=Server123456";
         //private static string ConnectionString = @"Data Source=SERVER;Initial Catalog=GESFARM3;User ID=SA;Password=Server123456";
@@ -25,7 +25,7 @@ namespace BASE
         public Data()
         {
 
-            if (DateTime.Now <= new DateTime(2021, 11, 30))
+            if (DateTime.Now <= new DateTime(2021, 12, 30))
             {
                 cmd = new SqlCommand();
                 cmd.Connection = connection;

@@ -129,6 +129,8 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PARAMETROS\api\FactorCambioController.cs" />
+    <Compile Include="Controllers\PARAMETROS\api\ParametrosController.cs" />
+    <Compile Include="Controllers\PARAMETROS\ParametrosController.cs" />
     <Compile Include="Controllers\SISCOS\api\CostosController.cs" />
     <Compile Include="Controllers\SISCOS\CostosController.cs" />
     <Compile Include="Controllers\SISEQUIV\api\DetalleEquivalenteController.cs" />
@@ -217,6 +219,8 @@
     <Content Include="JS\Comun.js" />
     <Content Include="JS\PARAMETROS\FactorCambio\FactorCambio.js" />
     <Content Include="JS\PARAMETROS\FactorCambio\FactorCambioService.js" />
+    <Content Include="JS\PARAMETROS\Parametro\Parametro.js" />
+    <Content Include="JS\PARAMETROS\Parametro\ParametroService.js" />
     <Content Include="JS\SISCOS\Clasificacion.js" />
     <Content Include="JS\SISCOS\Costos.js" />
     <Content Include="JS\SISCOS\CostosService.js" />
@@ -290,7 +294,7 @@
     <Content Include="Views\SISOPER\Mensual\Index.cshtml" />
     <Content Include="Views\SISINV\MinMax.cshtml" />
     <Content Include="Views\SISINV\Detalle.cshtml" />
-    <Content Include="Views\PARAMETROS\FactorCambio\FactorCambio.cshtml" />
+    <Content Include="Views\PARAMETROS\FactorCambio.cshtml" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
@@ -304,6 +308,7 @@
     <Content Include="Views\SISINV\Instancias.cshtml" />
     <Content Include="Views\SISTRAS\Traspaso.cshtml" />
     <Content Include="Views\SISEQUIV\Presentacion.cshtml" />
+    <Content Include="Views\PARAMETROS\Parametros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,11 +316,7 @@
     <Folder Include="Controllers\SISCEN\api\" />
     <Folder Include="JS\SEGURIDAD\" />
     <Folder Include="JS\SISCEN\" />
-    <Folder Include="Views\EEPP\" />
-    <Folder Include="Views\Equivalencia\" />
-    <Folder Include="Views\Presentacion\" />
     <Folder Include="Views\SISCEN\" />
-    <Folder Include="Views\Traspaso\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
