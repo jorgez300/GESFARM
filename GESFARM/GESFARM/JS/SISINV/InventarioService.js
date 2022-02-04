@@ -15,6 +15,40 @@
 
 }
 
+const ReportarFallaService = (Data, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Inventario/ReportarFalla",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Data),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const ListaFallasService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Inventario/ListaFallas",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
 const MinMaxService = (Filtros, Callback) => {
     $.ajax({
         url: "/GESFARM/api/Inventario/MinMax",

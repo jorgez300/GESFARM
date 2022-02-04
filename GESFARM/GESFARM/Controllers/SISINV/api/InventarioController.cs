@@ -47,6 +47,35 @@ namespace GESFARM.Controllers.SISINV.api
 
         }
 
+        public HttpResponseMessage ReportarFalla([FromBody] Falla item)
+        {
+
+            try
+            {
+                item.Registrar();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error reportando falla", ex.Message));
+            }
+
+        }
+
+        public HttpResponseMessage ListaFallas([FromBody] Falla item)
+        {
+
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, item.ListaFallas());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error listando fallas", ex.Message));
+            }
+
+        }
+
         public HttpResponseMessage ListaProductos()
         {
             try

@@ -231,6 +231,7 @@
     <Content Include="JS\SISEQUIV\Productos.js" />
     <Content Include="JS\SISEQUIV\Totales.js" />
     <Content Include="JS\SISINV\Detalle.js" />
+    <Content Include="JS\SISINV\Fallas.js" />
     <Content Include="JS\SISINV\Instancias.js" />
     <Content Include="JS\SISINV\InventarioService.js" />
     <Content Include="JS\SISINV\MinMax.js" />
@@ -309,6 +310,7 @@
     <Content Include="Views\SISTRAS\Traspaso.cshtml" />
     <Content Include="Views\SISEQUIV\Presentacion.cshtml" />
     <Content Include="Views\PARAMETROS\Parametros.cshtml" />
+    <Content Include="Views\SISINV\Fallas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,7 +2,7 @@
     GetListaProductos();
 });
 
-let filtro = 
+let filtro =
 {
     F_CodProd: null
 }
@@ -17,6 +17,37 @@ $("#BtnFiltrar").click(() => {
     Buscar();
 })
 
+$("#BtnReportarFalla").click(() => {
+    ReportarFalla();
+})
+
+
+let Falla = {
+    CodProd: null,
+    Cantidad: 1
+}
+
+const ReportarFalla = () => {
+
+    if (Producto == null) {
+        toastr.error("Producto no seleccionado", "Error")
+        return;
+    }
+    else {
+
+        Falla.CodProd = Producto.CodProd;
+        ReportarFallaService(Falla, () => {
+
+            toastr.success("Falla registrada", "Realizado");
+
+        });
+
+    }
+
+
+
+}
+
 const Buscar = () => {
 
     if (filtro.F_CodProd == null) {
@@ -29,8 +60,8 @@ const Buscar = () => {
     EquivalentesTotalesService(FiltrosEquivalentes, InitEquivalentes);
 }
 
-const SetFiltros =(val) => {
-    
+const SetFiltros = (val) => {
+
     if (val != null) {
         filtro.F_CodProd = val;
         FiltrosEquivalentes.CODIGO = val;
@@ -51,53 +82,62 @@ const Init = (Data) => {
     InitGrafica(Data);
 };
 
+let Producto = null;
 
 const InitTable = (Data) => {
 
     $("#TableDetalle").empty();
     $("#TableInstancia").empty();
 
-    Data.Item.forEach((item) => {
-        var HL = "";
+    var HL = "";
 
-        if (item.Existen < item.Minimo || item.Existen == 0) {
-            HL = "bg-warning"
-        }
+    Producto = Data.Item[0];
 
-        if (item.Existen > item.Maximo && item.Existen != 0) {
-            HL = "bg-danger"
-        }
+    if (Data.Item[0].Existen < Data.Item[0].Minimo || Data.Item[0].Existen == 0) {
+        HL = "bg-warning"
+    }
 
-        if (item.Existen >= item.Minimo && item.Existen <= item.Maximo && item.Existen != 0) {
-            HL = "bg-success"
-        }
+    if (Data.Item[0].Existen > Data.Item[0].Maximo && Data.Item[0].Existen != 0) {
+        HL = "bg-danger"
+    }
 
-        $("#TableDetalle").append(
-            `
+    if (Data.Item[0].Existen >= Data.Item[0].Minimo && Data.Item[0].Existen <= Data.Item[0].Maximo && Data.Item[0].Existen != 0) {
+        HL = "bg-success"
+    }
+
+    if (Data.Item[0].Existen == 0) {
+        $("#BtnReportarFalla").attr('disabled', false);
+    }
+    else {
+        $("#BtnReportarFalla").attr('disabled', true);
+    }
+
+    $("#TableDetalle").append(
+        `
                     <tr class="${HL}">
-                        <td>${item.CodProd}</td>
-                        <td>${item.Descrip}</td>
-                        <td>${item.SeVenden}</td>
-                        <td>${item.Existen}</td>
-                        <td>${item.Minimo}</td>
-                        <td>${item.Maximo}</td>
-                        <td>${item.Sobran}</td>
+                        <td>${Data.Item[0].CodProd}</td>
+                        <td>${Data.Item[0].Descrip}</td>
+                        <td>${Data.Item[0].SeVenden}</td>
+                        <td>${Data.Item[0].Existen}</td>
+                        <td>${Data.Item[0].Minimo}</td>
+                        <td>${Data.Item[0].Maximo}</td>
+                        <td>${Data.Item[0].Sobran}</td>
                     </tr>
             `
-        )
+    )
 
-        $("#TableInstancia").append(
-            `
+    $("#TableInstancia").append(
+        `
                     <tr>
-                        <td>${item.Instancia}</td>
-                        <td>${item.PrincAct}</td>
-                        <td>${item.Pres}</td>
-                        <td>${item.Costo}</td>
-                        <td>${item.Precio}</td>
+                        <td>${Data.Item[0].Instancia}</td>
+                        <td>${Data.Item[0].PrincAct}</td>
+                        <td>${Data.Item[0].Pres}</td>
+                        <td>${Data.Item[0].Costo}</td>
+                        <td>${Data.Item[0].Precio}</td>
                     </tr>
             `
-        )
-    });
+    )
+
 }
 
 var ChPromedioMensual = new Chart();
@@ -140,7 +180,7 @@ const InitGrafica = (Data) => {
 
 }
 
-const GetListaProductos = () =>{
+const GetListaProductos = () => {
 
     ListaProductosService((data) => {
         InitAutocomplete('CodProd', data);

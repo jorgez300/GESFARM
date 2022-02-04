@@ -296,5 +296,72 @@ namespace SISINV.DETALLE
     }
 
 
+    public class Falla
+    {
+        public string CodProd { get; set; }
+        public string Descrip { get; set; }
+        public int Cantidad { get; set; }
+        public int Existen { get; set; }
+        public int Promedio { get; set; }
+        public int Minimo { get; set; }
+        public int Maximo { get; set; }
+
+
+        public string Fecha { get; set; }
+
+        public void Registrar()
+        {
+            Data db = new Data();
+
+            SqlParameter[] parameters = new SqlParameter[] {
+                    Data.NewIN("@CODPROD",SqlDbType.NVarChar,CodProd),
+                    Data.NewIN("@CANTIDAD",SqlDbType.Int,Cantidad)
+                };
+
+            db.CallDBParameters("GF_ADM_FALLAS", parameters);
+
+        }
+
+
+        public List<Falla> ListaFallas()
+        {
+
+            List<Falla> Lista = new List<Falla>();
+
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] {
+                    Data.NewIN("@FECHA", SqlDbType.NVarChar, Fecha)
+                };
+            DataTable DT = db.CallDBList("GF_LISTA_FALLAS", parameters);
+
+            if (DT.Rows.Count > 0)
+            {
+                foreach (DataRow item in DT.Rows)
+                {
+                    Falla x = new Falla
+                    {
+                        CodProd = item["CodProd"].ToString(),
+                        Descrip = item["Descrip"].ToString(),
+                        Cantidad = int.Parse(item["Falla"].ToString()),
+                        Existen = int.Parse(item["Existen"].ToString()),
+                        Promedio = int.Parse(item["Promedio"].ToString()),
+                        Minimo = int.Parse(item["Minimo"].ToString()),
+                        Maximo = int.Parse(item["Maximo"].ToString())
+
+
+                    };
+
+                    Lista.Add(x);
+                }
+            }
+
+            return Lista;
+
+        }
+
+
+
+
+    }
 
 }

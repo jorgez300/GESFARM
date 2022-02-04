@@ -30,6 +30,13 @@ namespace GESFARM.Controllers.SISINV
 
         }
 
+        public ActionResult Fallas()
+        {
+
+            return View("~/Views/SISINV/Fallas.cshtml");
+
+        }
+
 
         public ActionResult Instancias()
         {

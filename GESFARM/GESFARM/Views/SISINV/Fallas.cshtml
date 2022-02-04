@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Fallas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Fecha</span>
+                </div>
+                <input type="date" id="FilFecha" class="form-control">
+            </div>
+        </div>
+        <div class="col-3">
+            <button id="BtnFiltrar" type="button" class="btn btn-info w-100">Filtrar</button>
+        </div>
+    </div>
+
+    <style>
+        .table td, .table th {
+            padding: .15rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Solicitados</th>
+                        <th>Existen</th>
+                        <th>Promedio</th>
+                        <th>Minimo</th>
+                        <th>Maximo</th>
+                    </tr>
+                </thead>
+                <tbody id="TableFalla">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/Fallas?r=" + DateTime.Now.ToString("ddmmyymiss"))
+}
+

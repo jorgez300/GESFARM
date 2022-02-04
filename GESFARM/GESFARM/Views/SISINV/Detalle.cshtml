@@ -18,8 +18,14 @@
         <div class="col-3">
             <button id="BtnFiltrar" type="button" class="btn btn-info w-100">Filtrar</button>
         </div>
+
     </div>
 
+    <div class="row mb-2">
+        <div class="col-4">
+            <button id="BtnReportarFalla" type="button" class="btn btn-success w-100" disabled>Reportar Falla</button>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12">
@@ -69,7 +75,7 @@
         </div>
         <div class="col-8">
 
-            <div class="row">
+            <div class="row mb-1">
                 <div class="col-6">
                     <div class="card shadow-sm">
                         <div class="card-body pr-2 pl-2">
@@ -126,7 +132,7 @@
 
 
 
-@section Scripts
+        @section Scripts
     {
-    @Scripts.Render("~/bundles/InvDetalle?r=" + DateTime.Now.ToString("ddmmyymiss"))
-}
+            @Scripts.Render("~/bundles/InvDetalle?r=" + DateTime.Now.ToString("ddmmyymiss"))
+        }
