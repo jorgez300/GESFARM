@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CostoProd.cs" />
     <Compile Include="Instancias.cs" />
     <Compile Include="InvDetalle.cs" />
     <Compile Include="Productos.cs" />
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\BASE\BASE.csproj">
       <Project>{067179AE-613C-43FA-B2C1-B71491392D44}</Project>
       <Name>BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PARAMETROS\PARAMETROS.csproj">
+      <Project>{9f370cec-ab1c-474f-b927-3f6ee5c848d8}</Project>
+      <Name>PARAMETROS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

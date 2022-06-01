@@ -52,7 +52,8 @@ namespace PARAMETROS
                             PAR_Valor_Texto = item["PAR_Valor_Texto"].ToString()
                         });
                     }
-                    else {
+                    else
+                    {
                         Lista.Add(new Parametro
                         {
                             PAR_Id = item["PAR_Id"].ToString(),
@@ -67,6 +68,48 @@ namespace PARAMETROS
 
 
             return Lista;
+        }
+
+        public static Parametro Retorna(string Nombre)
+        {
+           Parametro Item = new Parametro();
+
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[] { };
+            DataTable DT = db.CallDBList("GF_LISTA_PARAMETROS", parameters);
+
+            if (DT.Rows.Count > 0)
+            {
+                foreach (DataRow item in DT.Rows)
+                {
+
+                    if (item["PAR_Id"].ToString() == Nombre)
+                    {
+
+                        if (item["PAR_Valor_Numerico"].ToString() == String.Empty)
+                        {
+                            Item = new Parametro
+                            {
+                                PAR_Id = item["PAR_Id"].ToString(),
+                                PAR_Valor_Numerico = null,
+                                PAR_Valor_Texto = item["PAR_Valor_Texto"].ToString()
+                            };
+                        }
+                        else
+                        {
+                            Item = new Parametro
+                            {
+                                PAR_Id = item["PAR_Id"].ToString(),
+                                PAR_Valor_Numerico = Decimal.Parse(item["PAR_Valor_Numerico"].ToString()),
+                                PAR_Valor_Texto = null
+                            };
+                        }
+                    }
+
+                }
+            }
+
+            return Item;
         }
 
 

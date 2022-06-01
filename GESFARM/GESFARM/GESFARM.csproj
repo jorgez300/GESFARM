@@ -142,6 +142,7 @@
     <Compile Include="Controllers\SISEQUIV\EquivalenciaController.cs" />
     <Compile Include="Controllers\SISEQUIV\PresentacionController.cs" />
     <Compile Include="Controllers\SISEQUIV\PrinActController.cs" />
+    <Compile Include="Controllers\SISINV\api\CostoProdController.cs" />
     <Compile Include="Controllers\SISINV\api\InstanciasController.cs" />
     <Compile Include="Controllers\SISINV\api\InventarioController.cs" />
     <Compile Include="Controllers\SISOPER\api\ResumenDiarioController.cs" />
@@ -230,6 +231,7 @@
     <Content Include="JS\SISEQUIV\PrinAct.js" />
     <Content Include="JS\SISEQUIV\Productos.js" />
     <Content Include="JS\SISEQUIV\Totales.js" />
+    <Content Include="JS\SISINV\CostoProd.js" />
     <Content Include="JS\SISINV\Detalle.js" />
     <Content Include="JS\SISINV\Fallas.js" />
     <Content Include="JS\SISINV\Instancias.js" />
@@ -311,6 +313,7 @@
     <Content Include="Views\SISEQUIV\Presentacion.cshtml" />
     <Content Include="Views\PARAMETROS\Parametros.cshtml" />
     <Content Include="Views\SISINV\Fallas.cshtml" />
+    <Content Include="Views\SISINV\CostoProd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

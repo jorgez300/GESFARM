@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "CostoProd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <h2>Costo</h2>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Producto</span>
+                </div>
+                <input id="Producto" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-4">
+            <button type="button" class="btn btn-success" id="BtnRegistrar">Registrar costo</button>
+            <button type="button" class="btn btn-info" id="BtnFiltrar">Filtrar</button>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <style>
+                .table td, th {
+                    margin: 2px;
+                    font-size: 13px;
+                    padding: .15rem;
+                }
+            </style>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Costo USD</th>
+                    </tr>
+                </thead>
+                <tbody id="TableCosto">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-12">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Tasa</th>
+                        <th>Costo USD</th>
+                        <th>Proveedor</th>
+
+                    </tr>
+                </thead>
+                <tbody id="TableHistCosto">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalCosto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Asignar costo</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Codigo</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtId" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Descripcion</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtDesc" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Costo USD</span>
+                        </div>
+                        <input type="text" class="form-control Number" id="TxtCostoUSD">
+                    </div>
+                    <div class="input-group mb-3">
+                        <button type="button" class="btn btn-success" id="BtnCalcular">Calcular</button>
+                    </div>
+
+                    <div class="input-group mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Costo Bs</span>
+                        </div>
+                        <input type="text" class="form-control Number" id="TxtCostoBs" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Precio Bs</span>
+                        </div>
+                        <input type="text" class="form-control Number" id="TxtPrecioBs" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Precio USD</span>
+                        </div>
+                        <input type="text" class="form-control Number" id="TxtPrecioUSD" disabled>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
+                    <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/CostoProd?r=" + DateTime.Now.ToString("ddmmyymiss"))
+}

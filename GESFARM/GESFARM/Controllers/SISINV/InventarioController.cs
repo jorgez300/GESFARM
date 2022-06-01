@@ -45,5 +45,12 @@ namespace GESFARM.Controllers.SISINV
 
         }
 
+        public ActionResult CostoProd()
+        {
+
+            return View("~/Views/SISINV/CostoProd.cshtml");
+
+        }
+
     }
 }

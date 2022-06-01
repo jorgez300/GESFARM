@@ -16,7 +16,7 @@ namespace GESFARM
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Diario", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Inventario", action = "CostoProd", id = UrlParameter.Optional }
             );
         }
     }

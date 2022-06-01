@@ -54,6 +54,10 @@ namespace GESFARM
                        "~/JS/SISINV/InventarioService.js",
                        "~/JS/SISINV/Instancias.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/CostoProd").Include(
+                       "~/JS/SISINV/InventarioService.js",
+                       "~/JS/SISINV/CostoProd.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/Traspaso").Include(
                        "~/JS/SISTRAS/TraspasoService.js",
                        "~/JS/SISTRAS/Traspaso.js"));
