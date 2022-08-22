@@ -23,5 +23,16 @@ namespace SISINV.PRODUCTOS
 
         }
 
+        public static List<ItemLista> ListaProveedores()
+        {
+
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[0];
+            DataTable DT = db.CallDBList("GF_AUTO_PROVEEDORES", parameters);
+
+            return ListaMetodos.GetList(DT);
+
+        }
+
     }
 }

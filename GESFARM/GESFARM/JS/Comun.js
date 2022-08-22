@@ -204,6 +204,22 @@ const ListaProductosService = (Callback) => {
 
 }
 
+const ListaProveedoresService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/Inventario/ListaProveedores",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
 const AutoPresentacionService = (Callback) => {
     $.ajax({
         url: "/GESFARM/api/Presentacion/Auto",

@@ -88,5 +88,17 @@ namespace GESFARM.Controllers.SISINV.api
             }
         }
 
+        public HttpResponseMessage ListaProveedores()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Productos.ListaProveedores());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error obteniendo lista de productos", ex.Message));
+            }
+        }
+
     }
 }

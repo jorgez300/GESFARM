@@ -6,10 +6,31 @@
 
 <div class="container-fluid">
 
-    <div class="row mb-2">
+    <div class="row mb-4">
         <div class="col-12">
             <h2>Costo</h2>
         </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Tasa de cambio</p>
+                    <h5 id="IndTasa"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card shadow-sm">
+                <div class="card-body pr-2 pl-2">
+                    <p class="card-title">Porcentaje utilidad</p>
+                    <h5 id="IndUtilidad"></h5>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="row mb-2">
@@ -21,13 +42,36 @@
                 <input id="Producto" type="text" class="form-control" />
             </div>
         </div>
+        <div class="col-8">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Instancia</span>
+                </div>
+                <input id="Instancia" type="text" class="form-control" />
+            </div>
+        </div>
         <div class="col-4">
-            <button type="button" class="btn btn-success" id="BtnRegistrar">Registrar costo</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Estado</span>
+                </div>
+                <select id="Estado" type="text" class="form-control">
+                    <option value="T" selected> Todos</option>
+                    <option value="S"> Registrados</option>
+                    <option value="N"> No registrados</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-6 text-left">
             <button type="button" class="btn btn-info" id="BtnFiltrar">Filtrar</button>
+            <button type="button" class="btn btn-success" id="BtnInstancias">Instancias</button>
+        </div>
+        <div class="col-6 text-right">
+            <button type="button" class="btn btn-outline-success" id="BtnCalculo">Calculo masivo</button>
         </div>
     </div>
 
-    <div class="row mb-2">
+    <div class="row mt-2 mb-2">
         <div class="col-12">
 
             <style>
@@ -44,6 +88,8 @@
                         <th>Codigo</th>
                         <th>Descripcion</th>
                         <th>Costo USD</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="TableCosto">
@@ -52,29 +98,16 @@
         </div>
     </div>
 
-    <div class="row mb-2">
-        <div class="col-12">
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                        <th>Tasa</th>
-                        <th>Costo USD</th>
-                        <th>Proveedor</th>
-
-                    </tr>
-                </thead>
-                <tbody id="TableHistCosto">
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <style>
+        .modal-dialog {
+            max-width: 1000px !important;
+        }
+    </style>
 
 
     <div class="modal fade" id="ModalCosto">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -93,6 +126,12 @@
                             <span class="input-group-text">Descripcion</span>
                         </div>
                         <input type="text" class="form-control" id="TxtDesc" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Proveedor</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtProv">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -128,6 +167,85 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="BtnGuardar">Guardar</button>
                     <button type="button" class="btn btn-danger" id="BtnCerrar">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalHist">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Historico</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row mb-2">
+                        <div class="col-12">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Codigo</th>
+                                        <th>Descripcion</th>
+                                        <th>Tasa</th>
+                                        <th>Costo USD</th>
+                                        <th>Proveedor</th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="TableHistCosto">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="BtnCerrarHist">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="ModalInsUtil">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Instancia / Utilidad</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row mb-2">
+                        <div class="col-12">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Codigo</th>
+                                        <th>Instancia</th>
+                                        <th>Utilidad</th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="TableInsUtil">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="BtnCerrarInsUtil">Cerrar</button>
                 </div>
 
             </div>

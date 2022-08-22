@@ -36,7 +36,37 @@ namespace GESFARM.Controllers.SISINV.api
             try
             {
                 Item.GetProducto();
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GetHistorico([FromBody] CostoProd Item)
+        {
+
+            try
+            {
                 Item.GetHistorico();
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GetInstancias()
+        {
+
+            try
+            {
+                CostoProd Item = new CostoProd();
+                Item.GetInstancias();
                 return Request.CreateResponse(HttpStatusCode.OK, Item);
             }
             catch (Exception ex)
@@ -90,5 +120,35 @@ namespace GESFARM.Controllers.SISINV.api
             }
         }
 
+        [HttpPost]
+        public HttpResponseMessage EliminaHist([FromBody] CostoProd Item)
+        {
+
+            try
+            {
+                Item.EliminaHist("ELIMINAR");
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Calculo()
+        {
+
+            try
+            {
+                CostoProd Item = new CostoProd();
+                Item.Calculo();
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
     }
 }

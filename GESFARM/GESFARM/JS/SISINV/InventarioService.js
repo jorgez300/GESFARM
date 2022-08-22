@@ -134,6 +134,23 @@ const GetCostoProdService = (Filtros, Callback) => {
 
 }
 
+const GetHistoricoService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/GetHistorico",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
 const SetCostoProdService = (Filtros, Callback) => {
     $.ajax({
         url: "/GESFARM/api/CostoProd/Guardar",
@@ -143,6 +160,55 @@ const SetCostoProdService = (Filtros, Callback) => {
             "Content-Type": "application/json"
         },
         data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const EliminaHistService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/EliminaHist",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const SetCalculoService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/Calculo",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}
+
+const GetInstancias = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/GetInstancias",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
     }).done(function (response) {
         Callback(response);
     }).fail(function (response) {
