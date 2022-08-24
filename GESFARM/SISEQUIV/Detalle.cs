@@ -148,8 +148,6 @@ namespace SISEQUIV
 
             data.ListaEquivalentes = ListaEquivalentesProducto(F);
 
-            data.TotalItem = data.ListaEquivalentes.Count;
-            data.TotalEXisten = data.ListaEquivalentes.Sum(x => x.EXISTEN);
             return data;
         }
 

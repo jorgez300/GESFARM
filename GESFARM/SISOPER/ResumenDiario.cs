@@ -19,6 +19,9 @@ namespace SISOPER.DIARIO
         public float Utilidad = 0;
         public float PorCentajeUtilidad = 0;
 
+        public float ItemsFalla = 0;
+        public float CostoFalla = 0;
+
 
     }
     public class ItemDiario
@@ -34,6 +37,8 @@ namespace SISOPER.DIARIO
         public List<float> PorCentajeUtilidad = new List<float>();
         public List<float> Cantidad = new List<float>();
 
+        public List<float> ItemsFalla = new List<float>();
+        public List<float> CostoFalla = new List<float>();
     }
 
     public class ResumenDiario

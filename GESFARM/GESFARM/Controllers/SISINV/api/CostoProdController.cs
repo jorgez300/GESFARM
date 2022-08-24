@@ -65,7 +65,7 @@ namespace GESFARM.Controllers.SISINV.api
 
             try
             {
-                CostoProd Item = new CostoProd();
+                InstUtilAdm Item = new InstUtilAdm();
                 Item.GetInstancias();
                 return Request.CreateResponse(HttpStatusCode.OK, Item);
             }
@@ -74,6 +74,22 @@ namespace GESFARM.Controllers.SISINV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
             }
         }
+
+        [HttpPost]
+        public HttpResponseMessage GuardarUtilIns([FromBody] InstUtilAdm Item)
+        {
+
+            try
+            {
+                Item.Administrar("GUARDAR");
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
+
 
         [HttpPost]
         public HttpResponseMessage Actualizar([FromBody] CostoProd Item)

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CostoProd.cs" />
     <Compile Include="Instancias.cs" />
+    <Compile Include="InstUtil.cs" />
     <Compile Include="InvDetalle.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

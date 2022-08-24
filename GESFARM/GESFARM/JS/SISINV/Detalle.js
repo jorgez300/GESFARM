@@ -112,6 +112,12 @@ const InitTable = (Data) => {
         $("#BtnReportarFalla").attr('disabled', true);
     }
 
+    let PrinAct = [];
+
+    Data.Item.forEach((item) => {
+        PrinAct.push(item.PrincAct)
+    })
+
     $("#TableDetalle").append(
         `
                     <tr class="${HL}">
@@ -130,7 +136,7 @@ const InitTable = (Data) => {
         `
                     <tr>
                         <td>${Data.Item[0].Instancia}</td>
-                        <td>${Data.Item[0].PrincAct}</td>
+                        <td>${PrinAct.join(" - ")}</td>
                         <td>${Data.Item[0].Pres}</td>
                         <td>${Data.Item[0].Costo}</td>
                         <td>${Data.Item[0].Precio}</td>
@@ -190,15 +196,37 @@ const GetListaProductos = () => {
 
 const InitEquivalentes = (Data) => {
     InitTableEquivalentes(Data.ListaEquivalentes);
-    InitIndicadores(Data);
+    InitIndicadores();
 };
 
+let Depurado = [];
+let Equiv = [];
 
 const InitTableEquivalentes = (Data) => {
 
     $("#TableEquivalentes").empty();
 
-    Data.forEach((item) => {
+    Equiv = Data;
+    Depurado = [];
+    Equiv.forEach((item) => {
+
+        if (Depurado.find(Dep => Dep.CODIGO == item.CODIGO)) {
+
+            Depurado.forEach((item2) => {
+
+                if (item2.CODIGO == item.CODIGO) {
+                    item2.PA_DESCRIP += " - " + item.PA_DESCRIP;
+                }
+
+            });
+        }
+        else {
+            Depurado.push(item)
+        }
+
+    });
+
+    Depurado.forEach((item) => {
 
         $("#TableEquivalentes").append(
             `
@@ -216,10 +244,18 @@ const InitTableEquivalentes = (Data) => {
     });
 }
 
-const InitIndicadores = (Data) => {
+const InitIndicadores = () => {
 
-    $("#IndTotalItems").text(Data.TotalItem);
-    $("#IndTotalExistencia").text(Data.TotalEXisten);
+    $("#IndTotalItems").text(Depurado.length);
+
+    let TotalExist = 0;
+
+    Depurado.forEach((item) => {
+
+        TotalExist = TotalExist + item.EXISTEN;
+    });
+
+    $("#IndTotalExistencia").text(TotalExist);
 
 }
 

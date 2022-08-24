@@ -24,7 +24,7 @@
         <div class="col-3">
             <div class="card shadow-sm">
                 <div class="card-body pr-2 pl-2">
-                    <p class="card-title">Porcentaje utilidad</p>
+                    <p class="card-title">Porcentaje utilidad por defecto</p>
                     <h5 id="IndUtilidad"></h5>
                 </div>
             </div>
@@ -87,6 +87,7 @@
                     <tr>
                         <th>Codigo</th>
                         <th>Descripcion</th>
+                        <th>Instancia</th>
                         <th>Costo USD</th>
                         <th></th>
                         <th></th>
@@ -129,6 +130,12 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
+                            <span class="input-group-text">Instancia</span>
+                        </div>
+                        <input type="text" class="form-control" id="TxtInstancia" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">Proveedor</span>
                         </div>
                         <input type="text" class="form-control" id="TxtProv">
@@ -143,6 +150,12 @@
                         <button type="button" class="btn btn-success" id="BtnCalcular">Calcular</button>
                     </div>
 
+                    <div class="input-group mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Utilidad</span>
+                        </div>
+                        <input type="text" class="form-control Number" id="TxtUtilidad" disabled>
+                    </div>
                     <div class="input-group mb-3 mt-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Costo Bs</span>

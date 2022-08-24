@@ -216,3 +216,20 @@ const GetInstancias = (Callback) => {
     })
 
 }
+
+const GuardarUtilInsService = (Filtros, Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/GuardarUtilIns",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify(Filtros),
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}

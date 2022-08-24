@@ -12,12 +12,7 @@ namespace SISINV
 {
 
 
-    public class InstUtil
-    {
-        public string CodInst { get; set; } = null;
-        public string Descrip { get; set; } = null;
-        public int? Utilidad { get; set; } = null;
-    }
+
 
     public class CostoProdItem
     {
@@ -25,6 +20,7 @@ namespace SISINV
         public string CP_Codprod { get; set; } = null;
         public string CP_Descrip { get; set; } = null;
         public string CP_CodInst { get; set; } = null;
+        public string CP_DscInst { get; set; } = null;
         public string CP_FechaAct { get; set; } = null;
         public float? CP_CostoUSD { get; set; } = null;
         public float? CP_CostoBS { get; set; } = null;
@@ -39,7 +35,6 @@ namespace SISINV
         public List<CostoProdItem> Producto { get; set; } = new List<CostoProdItem>();
         public CostoProdItem Item { get; set; } = new CostoProdItem();
         public List<CostoProdItem> Historico { get; set; } = new List<CostoProdItem>();
-        public List<InstUtil> PorcInstancias { get; set; } = new List<InstUtil>();
 
         public string Codigo { get; set; }
         public string Instancia { get; set; }
@@ -73,6 +68,7 @@ namespace SISINV
                         CP_Codprod = item["Codprod"].ToString(),
                         CP_Descrip = item["Descrip"].ToString(),
                         CP_CodInst = item["CodInst"].ToString(),
+                        CP_DscInst = item["DscInst"].ToString(),
                         CP_CostoUSD = float.Parse(item["Costo"].ToString())
                     });
                 }
@@ -105,25 +101,7 @@ namespace SISINV
             }
         }
 
-        public void GetInstancias()
-        {
-            Data db = new Data();
-            SqlParameter[] parameters = new SqlParameter[0];
-            DataTable DT = db.CallDBList("GF_LISTA_INSTUTIL", parameters);
 
-            if (DT.Rows.Count > 0)
-            {
-                foreach (DataRow item in DT.Rows)
-                {
-                    PorcInstancias.Add(new InstUtil
-                    {
-                        CodInst = item["CodInst"].ToString(),
-                        Descrip = item["Descrip"].ToString(),
-                        Utilidad = int.Parse(item["Utilidad"].ToString())
-                    });
-                }
-            }
-        }
 
         public void Administrar(string Accion)
         {

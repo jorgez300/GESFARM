@@ -301,6 +301,7 @@ namespace SISINV.DETALLE
         public string CodProd { get; set; }
         public string Descrip { get; set; }
         public int Cantidad { get; set; }
+        public decimal Costo { get; set; }
         public int Existen { get; set; }
         public int Promedio { get; set; }
         public int Minimo { get; set; }
@@ -343,6 +344,7 @@ namespace SISINV.DETALLE
                         CodProd = item["CodProd"].ToString(),
                         Descrip = item["Descrip"].ToString(),
                         Cantidad = int.Parse(item["Falla"].ToString()),
+                        Costo = decimal.Parse(item["Costo"].ToString()),
                         Existen = int.Parse(item["Existen"].ToString()),
                         Promedio = int.Parse(item["Promedio"].ToString()),
                         Minimo = int.Parse(item["Minimo"].ToString()),

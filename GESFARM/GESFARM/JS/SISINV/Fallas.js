@@ -21,12 +21,13 @@ const Listar = () => {
 
 }
 
+let CostoTotal = 0;
 
 const InitTable = (Data) => {
 
     $("#TableFalla").empty();
 
-
+    CostoTotal = 0;
     Data.forEach((item) => {
 
         let HL = '';
@@ -41,6 +42,7 @@ const InitTable = (Data) => {
                         <td>${item.CodProd}</td>
                         <td>${item.Descrip}</td>
                         <td>${item.Cantidad}</td>
+                        <td>${FormatNumber(item.Costo)}</td>
                         <td>${item.Existen}</td>
                         <td>${item.Promedio}</td>                     
                         <td>${item.Minimo}</td>
@@ -49,7 +51,12 @@ const InitTable = (Data) => {
             `
         )
 
+        CostoTotal = CostoTotal + item.Costo;
+
+
     });
+
+    $("#IndCosto").html(FormatNumber(CostoTotal))
 
 
 }
