@@ -37,6 +37,7 @@ namespace SISINV
         public string CostoUsd { get; set; } = null;
         public string CostoBs { get; set; } = null;
         public string Precio3 { get; set; } = null;
+        public string Existen { get; set; } = null;
 
     }
 
@@ -173,12 +174,13 @@ namespace SISINV
             DT.Columns["CostoUsd"].ColumnName = "Costo USD";
             DT.Columns["CostoBs"].ColumnName = "Costo Bs";
             DT.Columns["Precio3"].ColumnName = "Precio 3";
+            DT.Columns["Existen"].ColumnName = "Existencia";
 
 
             XLWorkbook wb = new XLWorkbook();
             IXLWorksheet Hoja = wb.Worksheets.Add(DT, "Reporte de costos");
 
-            IXLRange range = Hoja.Range("A1:E1");
+            IXLRange range = Hoja.Range("A1:F1");
             range.DataType = XLDataType.Text;
             range.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
             range.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
