@@ -143,12 +143,11 @@ namespace SISTRAS
             Traspaso Obj = new Traspaso();
             Obj.GetDetalleTraspaso();
 
-            Directorios.CrearCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\");
-            Directorios.CrearCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Generados\");
+            Directorios.CreaDirectorio(Directorios.DirTraspasosGenerados);
 
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Generados\" + Obj.ORIGEN + ".json", BASE.ArchivoJson.GeneraJson(Obj));
+            File.WriteAllText(Directorios.DirTraspasosGenerados + Obj.ORIGEN + ".json", BASE.ArchivoJson.GeneraJson(Obj));
 
-            Byte[] bytes = File.ReadAllBytes(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Generados\" + Obj.ORIGEN + ".json");
+            Byte[] bytes = File.ReadAllBytes(Directorios.DirTraspasosGenerados + Obj.ORIGEN + ".json");
 
             return new ArchivoTraspaso
             {
@@ -180,12 +179,12 @@ namespace SISTRAS
         void EscribeJsonTraspaso(string ORIGEN)
         {
 
-            Directorios.CrearCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\");
-            Directorios.CrearCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Recibidos\" + ORIGEN + @"\");
+            Directorios.CreaDirectorio(Directorios.DirTraspasosRecibidos);
+            Directorios.CreaDirectorio(Directorios.DirTraspasosRecibidos + ORIGEN + @"\");
 
-            Directorios.LimpiaCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Recibidos\" + ORIGEN + @"\");
+            Directorios.LimpiaDirectorio(Directorios.DirTraspasosRecibidos + ORIGEN + @"\");
 
-            File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Recibidos\" + ORIGEN + @"\Traspaso" + ORIGEN + @".json", Convert.FromBase64String(DATA.Split(',')[1]));
+            File.WriteAllBytes(Directorios.DirTraspasosRecibidos + ORIGEN + @"\Traspaso" + ORIGEN + @".json", Convert.FromBase64String(DATA.Split(',')[1]));
         }
 
         Traspaso LeeJsonTraspaso(string ORIGEN)

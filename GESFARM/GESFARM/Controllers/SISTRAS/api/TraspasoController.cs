@@ -40,7 +40,7 @@ namespace GESFARM.Controllers.SISTRAS.api
             catch (Exception ex)
             {
                 Traspaso.LimpiaTraspasoTodo();
-                Directorios.LimpiaCarpeta(AppDomain.CurrentDomain.BaseDirectory + @"Traspasos\Recibidos\");
+                Directorios.LimpiaDirectorio(Directorios.DirTraspasosGenerados);
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error generando traspaso", ex.Message));
             }
 

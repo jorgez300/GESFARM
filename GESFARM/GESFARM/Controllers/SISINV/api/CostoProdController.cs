@@ -166,5 +166,22 @@ namespace GESFARM.Controllers.SISINV.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
             }
         }
+
+        [HttpPost]
+        public HttpResponseMessage GetDatosReporte()
+        {
+
+            try
+            {
+                CostoProd Item = new CostoProd();
+                Item.GetDatosReporte();
+                return Request.CreateResponse(HttpStatusCode.OK, Item);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new Error("Error agregando EEPP", ex.Message));
+            }
+        }
+
     }
 }

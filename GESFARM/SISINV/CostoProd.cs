@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BASE;
+using ClosedXML.Excel;
 using PARAMETROS;
 
 namespace SISINV
@@ -29,17 +30,32 @@ namespace SISINV
         public string CP_ProveedorDsc { get; set; } = null;
     }
 
+    public class ReporteCostoProdItem
+    {
+        public string Codigo { get; set; } = null;
+        public string Descripcion { get; set; } = null;
+        public string CostoUsd { get; set; } = null;
+        public string CostoBs { get; set; } = null;
+        public string Precio3 { get; set; } = null;
+
+    }
+
     public class CostoProd
     {
 
         public List<CostoProdItem> Producto { get; set; } = new List<CostoProdItem>();
         public CostoProdItem Item { get; set; } = new CostoProdItem();
         public List<CostoProdItem> Historico { get; set; } = new List<CostoProdItem>();
+        private List<ReporteCostoProdItem> ReporteCosto { get; set; } = new List<ReporteCostoProdItem>();
 
         public string Codigo { get; set; }
         public string Instancia { get; set; }
         public string Tasa { get; set; }
         public string PorcUtil { get; set; }
+        public string Origen { get; set; }
+
+        public string Base64 { get; set; }
+        public string NombreExcel { get; set; }
 
 
         public void Parametros()
@@ -47,6 +63,8 @@ namespace SISINV
 
             Tasa = Parametro.Retorna("TASA").PAR_Valor_Numerico.ToString();
             PorcUtil = Parametro.Retorna("POR_UTIL").PAR_Valor_Numerico.ToString();
+            Origen = Parametro.Retorna("ORI_DATA").PAR_Valor_Texto.ToString();
+
 
         }
 
@@ -101,8 +119,6 @@ namespace SISINV
             }
         }
 
-
-
         public void Administrar(string Accion)
         {
             Data db = new Data();
@@ -134,6 +150,70 @@ namespace SISINV
             db.CallDBParameters("GF_ADM_COSTOPRODHIST", parameters);
 
         }
+
+        public void GetDatosReporte()
+        {
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[0];
+            DataTable DT = db.CallDBList("GF_REPORTE_COSTOS", parameters);
+
+            if (DT.Rows.Count > 0)
+            {
+                GeneraExcel(DT);
+            }
+        }
+
+        private void GeneraExcel(DataTable DT)
+        {
+
+            Parametros();
+
+            DT.Columns["Codigo"].ColumnName = "Codigo";
+            DT.Columns["Descripcion"].ColumnName = "Descripcion";
+            DT.Columns["CostoUsd"].ColumnName = "Costo USD";
+            DT.Columns["CostoBs"].ColumnName = "Costo Bs";
+            DT.Columns["Precio3"].ColumnName = "Precio 3";
+
+
+            XLWorkbook wb = new XLWorkbook();
+            IXLWorksheet Hoja = wb.Worksheets.Add(DT, "Reporte de costos");
+
+            IXLRange range = Hoja.Range("A1:E1");
+            range.DataType = XLDataType.Text;
+            range.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+            range.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            range.Style.Fill.BackgroundColor = XLColor.FromArgb(69, 111, 173);
+
+            Hoja.Columns().AdjustToContents();
+            Hoja.Row(1).InsertRowsAbove(5);
+
+            range = Hoja.Range("A1:D1");
+            range.DataType = XLDataType.Text;
+            range.Value = "Reporte de costos " + Origen;
+            range.Style.Fill.BackgroundColor = XLColor.FromArgb(69, 111, 173);
+            range.Style.Font.FontColor = XLColor.White;
+            range.Style.Font.SetBold();
+            range.Merge();
+
+            range = Hoja.Range("A2:D2");
+            range.DataType = XLDataType.Text;
+            range.Value = "Fecha: " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+            range.Style.Fill.BackgroundColor = XLColor.FromArgb(69, 111, 173);
+            range.Style.Font.FontColor = XLColor.White;
+            range.Style.Font.SetBold();
+            range.Merge();
+            NombreExcel = "Reporte de costos " + Origen + " "+ DateTime.Now.ToString("dd MM yyyy HH mm ss") + ".xlsx";
+
+            Directorios.CreaDirectorio(Directorios.DirCostos);
+            Directorios.LimpiaDirectorio(Directorios.DirCostos);
+            wb.SaveAs(Directorios.DirCostos + NombreExcel);
+
+            wb.Dispose();
+            Base64 = Directorios.LeeArchivo(Directorios.DirCostos, NombreExcel, "xlsx");
+        }
+
+
+
 
     }
 }

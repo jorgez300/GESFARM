@@ -233,3 +233,20 @@ const GuardarUtilInsService = (Filtros, Callback) => {
     })
 
 }
+
+
+const GetDatosReporteService = (Callback) => {
+    $.ajax({
+        url: "/GESFARM/api/CostoProd/GetDatosReporte",
+        method: "POST",
+        timeout: 0,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (response) {
+        Callback(response);
+    }).fail(function (response) {
+        HandleError(response.responseJSON);
+    })
+
+}

@@ -43,6 +43,12 @@ $("#BtnCerrarInsUtil").click(() => {
 
 })
 
+$("#BtnReporte").click(() => {
+
+    GetDatosReporte();
+
+})
+
 
 let Tasa = null;
 let PorcUtil = null;
@@ -74,6 +80,28 @@ const GetParametros = () => {
 
 }
 
+const GetDatosReporte = () => {
+
+    GetDatosReporteService((r) => {
+
+        console.log(r.Base64);
+
+        //DescargaArchivo("Archivo.xlsx", "data:" + r.Base64);
+        OpenFile("data:" + r.Base64, r.NombreExcel);
+
+    })
+
+}
+
+const DescargaArchivo = (Nombre, Base64) => {
+
+    let a = document.createElement("a"); //Create <a>
+    a.href = Base64 //Image Base64 Goes here
+    a.download = Nombre; //File name Here
+    a.click(); //Downloaded file
+    a.remove();
+
+}
 
 const GetListaProductos = () => {
 
