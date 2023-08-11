@@ -41,18 +41,29 @@ namespace SISOPER.DIARIO
         public List<float> CostoFalla = new List<float>();
     }
 
+    public class ItemFallas
+    {
+
+        public List<string> Periodo = new List<string>();
+
+        public List<float> ItemsFalla = new List<float>();
+        public List<float> CostoFalla = new List<float>();
+    }
+
     public class ResumenDiario
     {
         public ItemDiario Diario = new ItemDiario();
         public ItemDiariolActual DiaActual = new ItemDiariolActual();
+        public ItemFallas Fallas = new ItemFallas();
 
         public ResumenDiario()
         {
-            Diario = _Diario();
-            DiaActual = _DiaActual();
+            _Diario();
+            _DiaActual();
+            //_Fallas();
         }
 
-        ItemDiario _Diario()
+        void _Diario()
         {
 
             ItemDiario Lista = new ItemDiario();
@@ -73,19 +84,16 @@ namespace SISOPER.DIARIO
                     Lista.PorCentajeUtilidad.Add(float.Parse(item["PorCentajeUtilidad"].ToString()));
                     Lista.Cantidad.Add(float.Parse(item["Cantidad"].ToString()));
                     Lista.MtoXVenta.Add(float.Parse(item["MtoXVenta"].ToString()));
+                    Lista.ItemsFalla.Add(float.Parse(item["Cant_Fallas"].ToString()));
+                    Lista.CostoFalla.Add(float.Parse(item["Monto_Fallas"].ToString()));
                 }
             }
 
-
-            return Lista;
-
-
+            Diario = Lista;
         }
 
-        ItemDiariolActual _DiaActual()
+        void _DiaActual()
         {
-
-
             ItemDiariolActual Item = new ItemDiariolActual();
 
             Data db = new Data();
@@ -112,12 +120,36 @@ namespace SISOPER.DIARIO
                 }
             }
 
+            DiaActual = Item;
 
-            return Item;
+        }
 
+        void _Fallas()
+        {
+
+            ItemFallas Lista = new ItemFallas();
+
+            Data db = new Data();
+            SqlParameter[] parameters = new SqlParameter[0];
+            DataTable DT = db.CallDBList("GF_RESUMEN_FALLAS_DIARIO", parameters);
+
+            if (DT.Rows.Count > 0)
+            {
+                foreach (DataRow item in DT.Rows)
+                {
+                    Lista.Periodo.Add(item["Anio"].ToString() + "-" + item["Mes"].ToString() + "-" + item["Dia"].ToString());
+                    Lista.ItemsFalla.Add(float.Parse(item["CANTIDAD"].ToString()));
+                    Lista.CostoFalla.Add(float.Parse(item["TOTAL"].ToString()));
+
+                }
+            }
+
+
+            Fallas = Lista;
 
 
         }
+
     }
 
 

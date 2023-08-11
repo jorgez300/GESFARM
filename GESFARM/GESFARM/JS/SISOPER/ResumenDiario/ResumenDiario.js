@@ -15,6 +15,8 @@ const Init = (Data) => {
     InitGrafPorcenUtilidad(Data);
     InitGrafCantidad(Data);
     InitGrafMtoXVenta(Data);
+    InitGrafFallasCant(Data);
+    InitGrafFallasMonto(Data);
     InitIndicadores(Data);
 };
 
@@ -243,7 +245,6 @@ const InitGrafCantidad = (Data) => {
 var ChartMtoXVenta = new Chart();
 var ctxMtoXVenta = null;
 
-
 const InitGrafMtoXVenta = (Data) => {
 
     console.log(Data);
@@ -280,6 +281,86 @@ const InitGrafMtoXVenta = (Data) => {
 
 
 }
+
+var ChartFallasCant = new Chart();
+var ctxFallasCant = null;
+
+const InitGrafFallasCant = (Data) => {
+
+    console.log(Data);
+
+    ChartFallasCant.destroy();
+
+    ctxFallasCant = document.getElementById('ChartFallasCant');
+    ChartFallasCant = new Chart(ctxFallasCant, {
+        type: 'bar',
+        data: {
+            labels: Data.Diario.Periodo,
+            datasets: [{
+                label: 'Items fallas',
+                data: Data.Diario.ItemsFalla,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+}
+
+var ChartFallasMonto = new Chart();
+var ctxFallasMonto = null;
+
+const InitGrafFallasMonto = (Data) => {
+
+    console.log(Data);
+
+    ChartFallasMonto.destroy();
+
+    ctxFallasMonto = document.getElementById('ChartFallasMonto');
+    ChartFallasMonto = new Chart(ctxFallasMonto, {
+        type: 'bar',
+        data: {
+            labels: Data.Diario.Periodo,
+            datasets: [{
+                label: 'Monto fallas',
+                data: Data.Diario.CostoFalla,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+}
+
+
 
 const InitIndicadores = (Data) => {
 
